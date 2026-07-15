@@ -1,0 +1,60 @@
+{
+    "$type": "GameObject",
+    "DataName": null,
+    "Sprite": "",
+    "Visible": true,
+    "Solid": false,
+    "Depth": 0,
+    "Persistent": true,
+    "ParentObject": "",
+    "MaskSprite": "",
+    "UsesPhysics": false,
+    "IsSensor": false,
+    "CollisionShape": "Circle",
+    "Density": 0.5,
+    "Restitution": 0.1,
+    "Group": 0,
+    "LinearDamping": 0.1,
+    "AngularDamping": 0.1,
+    "Friction": 0.2,
+    "Awake": true,
+    "Kinematic": false,
+    "PhysicsVertices": [],
+    "Events": [
+        {
+            "Category": "Create",
+            "Subtype": "",
+            "CodeEntry": "gml_Object_obj_client_Create_0"
+        },
+        {
+            "Category": "Destroy",
+            "Subtype": "",
+            "CodeEntry": "gml_Object_obj_client_Destroy_0"
+        },
+        {
+            "Category": "Alarm",
+            "Subtype": "0",
+            "CodeEntry": "gml_Object_obj_client_Alarm_0"
+        },
+        {
+            "Category": "Step",
+            "Subtype": "Step",
+            "CodeEntry": "gml_Object_obj_client_Step_0"
+        },
+        {
+            "Category": "Other",
+            "Subtype": "3",
+            "CodeEntry": "gml_Object_obj_client_Other_3"
+        },
+        {
+            "Category": "Other",
+            "Subtype": "68",
+            "CodeEntry": "gml_Object_obj_client_Other_68"
+        },
+        {
+            "Category": "Draw",
+            "Subtype": "DrawGUI",
+            "CodeEntry": "gml_Object_obj_client_Draw_64"
+        }
+    ]
+}

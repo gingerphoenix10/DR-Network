@@ -1,0 +1,1 @@
+﻿global.mysteryhello = 1;

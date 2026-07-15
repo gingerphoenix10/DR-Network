@@ -1,0 +1,9 @@
+﻿funalpha = 0;
+menudisappear = 0;
+modes = [["PVP", "(WIP)"], ["Idk Yet", "(WIP)"]];
+colors = [0, 0];
+selected = 0;
+minigameselected = 0;
+minigameframe = 0;
+minigamespeed = 0.3;
+lock = 0;

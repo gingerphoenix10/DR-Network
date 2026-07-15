@@ -1,0 +1,10 @@
+﻿event_inherited();
+visible = 1;
+image_speed = 0.2;
+depth = 999999;
+keytype = 0;
+keyin = 0;
+turnedoffmes = "* (It's some kind of switch.^1)&* (There's a red-colored slot in the center.)/%";
+turnedmes = "* (Click!^1)&* (The red key fits perfectly into the slot.)/%";
+alreadyturnedmes = "* (The red switch has been turned on.)/%";
+anim = 0;

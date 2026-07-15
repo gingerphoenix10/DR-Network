@@ -1,0 +1,55 @@
+{
+    "$type": "GameObject",
+    "DataName": null,
+    "Sprite": "spr_sink_dark",
+    "Visible": true,
+    "Solid": false,
+    "Depth": 0,
+    "Persistent": false,
+    "ParentObject": "obj_interactable",
+    "MaskSprite": "",
+    "UsesPhysics": false,
+    "IsSensor": false,
+    "CollisionShape": "Circle",
+    "Density": 0.5,
+    "Restitution": 0.1,
+    "Group": 0,
+    "LinearDamping": 0.1,
+    "AngularDamping": 0.1,
+    "Friction": 0.2,
+    "Awake": true,
+    "Kinematic": false,
+    "PhysicsVertices": [],
+    "Events": [
+        {
+            "Category": "Create",
+            "Subtype": "",
+            "CodeEntry": "gml_Object_obj_dark_sink_Create_0"
+        },
+        {
+            "Category": "Step",
+            "Subtype": "Step",
+            "CodeEntry": "gml_Object_obj_dark_sink_Step_0"
+        },
+        {
+            "Category": "Other",
+            "Subtype": "10",
+            "CodeEntry": "gml_Object_obj_dark_sink_Other_10"
+        },
+        {
+            "Category": "Other",
+            "Subtype": "4",
+            "CodeEntry": "gml_Object_obj_dark_sink_Other_4"
+        },
+        {
+            "Category": "Other",
+            "Subtype": "5",
+            "CodeEntry": "gml_Object_obj_dark_sink_Other_5"
+        },
+        {
+            "Category": "Draw",
+            "Subtype": "Draw",
+            "CodeEntry": "gml_Object_obj_dark_sink_Draw_0"
+        }
+    ]
+}

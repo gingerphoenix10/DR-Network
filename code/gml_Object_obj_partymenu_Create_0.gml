@@ -1,0 +1,11 @@
+﻿partylayer = 0;
+selected = 0;
+partyalpha = 0;
+done = 0;
+hearty = 0;
+buttons = [[], ["Manage Party", "Leave the Party", "Back"], ["Invite Player", "", "Back"]];
+playerarray = [];
+offsetsy = [];
+shaketext = 0;
+selectedplayer = 0;
+ohuh = 0;

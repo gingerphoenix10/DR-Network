@@ -1,0 +1,1 @@
+﻿msgsetup("* (Golden flowers.)/%");

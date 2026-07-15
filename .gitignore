@@ -1,0 +1,9 @@
+*.dll
+*.exe
+*.win
+*.gamelog.txt
+*.ogg
+options.ini
+mod-backup-manifest.json
+audiogroup*.dat
+.modbackup

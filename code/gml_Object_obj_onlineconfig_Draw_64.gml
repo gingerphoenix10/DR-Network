@@ -1,0 +1,10 @@
+draw_set_alpha(configalpha - 0.5);
+draw_sprite(sprite_index, image_index, display_get_gui_width(), display_get_gui_height());
+draw_set_color(c_white);
+draw_set_font(fnt_main);
+draw_set_valign(fa_bottom);
+draw_set_halign(fa_center);
+draw_text(display_get_gui_width() - 79, display_get_gui_height() - 10, version);
+draw_set_alpha(1);
+draw_set_valign(fa_top);
+draw_set_halign(fa_left);
