@@ -1,8 +1,8 @@
-﻿scr_depth();
+scr_depth();
 if (myinteract == 1 && con == 0)
 {
     con = 1;
-    snd_play(591);
+    //snd_play(snd_mysterygo);
     image_index = 1;
 }
 if (con == 1)

@@ -1,8 +1,7 @@
-﻿event_inherited();
+event_inherited();
+
 if (countdown)
 {
-    with (910)
-    {
+    with (obj_plat_player)
         state = 1;
-    }
 }

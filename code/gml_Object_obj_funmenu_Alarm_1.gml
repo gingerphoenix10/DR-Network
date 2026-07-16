@@ -1,1 +1,1 @@
-﻿instance_create(0, 0, 1308);
+instance_create(0, 0, obj_fadeout);

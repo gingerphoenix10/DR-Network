@@ -137,6 +137,7 @@ function mysterycheck()
 
 function mysteryman(arg0 = "chapter5")
 {
+    arg0 = "chapter3";
     global.mysterymemo = [room, obj_mainchara.x, obj_mainchara.y, global.currentsong[0], global.darkzone, global.character];
     global.mysteryin = arg0;
     mus_volume(global.currentsong[1], 0, 3);
@@ -1449,8 +1450,7 @@ global.returningFromPVP = false;
 
 function IsPVP()
 {
-    return false;
-    //return room == room_plat_pvp_tree;
+    return room == room_plat_pvp_tree;
 }
 
 function ONLINE_DEBUG()

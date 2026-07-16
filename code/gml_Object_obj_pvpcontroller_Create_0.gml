@@ -1,2 +1,2 @@
-﻿instance_create(0, 0, 1770);
-instance_create(0, 0, 1772);
+instance_create(0, 0, obj_pvp_countdown);
+instance_create(0, 0, obj_pvp_spectate);

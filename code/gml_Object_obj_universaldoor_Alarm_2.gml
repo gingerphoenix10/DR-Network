@@ -1,4 +1,4 @@
-﻿instance_create(0, 0, 1172);
+instance_create(0, 0, obj_persistentfadein);
 event_user(7);
 if (!mystery)
 {
