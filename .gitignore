@@ -7,3 +7,6 @@ options.ini
 mod-backup-manifest.json
 audiogroup*.dat
 .modbackup
+
+# Remove this once ready
+conv_utils/

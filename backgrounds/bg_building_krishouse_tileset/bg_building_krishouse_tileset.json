@@ -1,0 +1,22 @@
+{
+    "$type": "Background",
+    "DataName": null,
+    "Transparent": false,
+    "Smooth": false,
+    "Preload": false,
+    "Tileset": {
+        "VersionNumber": 2,
+        "TileWidth": 195,
+        "TileHeight": 190,
+        "OutputBorderX": 2,
+        "OutputBorderY": 2,
+        "TileColumns": 1,
+        "ItemsPerTileCount": 1,
+        "TileCount": 1,
+        "ExportedSprite": null,
+        "FrameLength": 66666,
+        "TileIDs": [
+            0
+        ]
+    }
+}

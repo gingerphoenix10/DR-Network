@@ -1,0 +1,1 @@
+﻿global.pvpHealth = global.pvpMaxHealth;
