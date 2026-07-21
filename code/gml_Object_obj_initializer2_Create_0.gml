@@ -1,4 +1,5 @@
-global.is_console = scr_is_switch_os() || os_type == os_ps4 || os_type == os_ps5;
+global.is_realconsole = scr_is_switch_os() || os_type == os_ps4 || os_type == os_ps5;
+global.is_console = global.is_realconsole; // This can be modified to add "|| ONLINE_DEBUG()" if testing that
 
 if (!global.is_console)
     window_enable_borderless_fullscreen(true);
@@ -131,3 +132,28 @@ enum UnknownEnum
 }
 
 instance_create(100, 200, obj_unofficialwarning);
+
+if (global.is_realconsole)
+{
+    // When testing the mod on consoles, route any crashes / errors to be sent remotely to a TCP server for debugging
+    // No idea if this actually works once leaving the initializer room, but I haven't needed it yet
+    var debuggerIP = "192.168.1.222";
+    var debuggerPort = 2845;
+    network_set_config(network_config_connect_timeout,4000);
+    debugSocket = network_create_socket(network_socket_tcp);
+    connection = network_connect_raw(debugSocket, debuggerIP, debuggerPort);
+    function send_utf8(text)
+    {
+        var buff = buffer_create(string_byte_length(text) + 1, buffer_grow, 1);
+        buffer_write(buff, buffer_string, text);
+        network_send_raw(debugSocket, buff, buffer_tell(buff));
+        buffer_delete(buff);
+    }
+
+    send_utf8("Connected to Console!");
+
+    exception_unhandled_handler(function(ex)
+    {
+        send_utf8(string(ex))
+    });
+}

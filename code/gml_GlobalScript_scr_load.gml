@@ -1,5 +1,8 @@
-﻿function scr_load()
+function scr_load()
 {
+    // When forcing console mode on PC, it'll crash trying to do something console-specific. Switch to actual platform for this
+    var prevCons = global.is_console;
+    global.is_console = global.is_realconsole;
     snd_free_all();
     filechoicebk = global.filechoice;
     scr_gamestart();
@@ -353,4 +356,5 @@
     {
         room_goto(__loadedroom);
     }
+    global.is_console = prevCons;
 }

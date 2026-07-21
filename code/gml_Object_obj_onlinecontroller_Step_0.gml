@@ -2,6 +2,9 @@ var networkobj = networkvarsget(1);
 var playerid = networkvarsget(2);
 var netlist = networkvarsget(3);
 
+if (!variable_global_exists("interact")) // Consoles define global.interact later than PC, so add this check to prevent a crash
+    exit;
+
 if (networkobj == -4)
 {
     if (global.interact == 10)

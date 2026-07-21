@@ -131,16 +131,16 @@ if (global.interact == 0)
     }
     else if (threebuffer < 0 && global.flag[7] == 0 && battlemode == 0 && swordmode == 0 && mysterycheck() == 1)
     {
-        if (global.key_online && !instance_exists(1755))
+        if (global.key_online && !instance_exists(obj_onlinemenu))
         {
-            instance_create(x, y, 1755);
+            instance_create(x, y, obj_onlinemenu);
             global.interact = 8;
             threebuffer = 2;
             twobuffer = 2;
         }
-        else if (global.key_lostlevels && !instance_exists(1748) && global.lostlevels == 1)
+        else if (global.key_lostlevels && !instance_exists(obj_lostlevelsmenu) && global.lostlevels == 1)
         {
-            instance_create(x, y, 1748);
+            instance_create(x, y, obj_lostlevelsmenu);
             global.interact = 8;
             threebuffer = 2;
             twobuffer = 2;

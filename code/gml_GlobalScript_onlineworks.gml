@@ -5,7 +5,7 @@ function onlineinit()
     global.onlineinitiated = 1;
     global.ip = "127.0.0.1";
     global.port = "7676";
-    global.publicip = "45.133.89.163";
+    global.publicip = "45.133.89.163"; // I don't have a dedicated server, but this'll work whenever I'm hosting
     global.publicport = "7676";
     
     switch (global.chapter)
@@ -1455,5 +1455,5 @@ function IsPVP()
 
 function ONLINE_DEBUG()
 {
-    return false;
+    return true;
 }
