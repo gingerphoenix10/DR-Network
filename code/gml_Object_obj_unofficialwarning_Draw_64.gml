@@ -1,5 +1,56 @@
 var guiwd = display_get_gui_width();
 var guihg = display_get_gui_height();
+
+if (noDialogue >= 0)
+{
+    timer++;
+    
+    if (noDialogue >= array_length(dialogueLines))
+    {
+        draw_sprite_ext(spr_roaringknight_slash_white_horizontal, 0, (guiwd / 2) - 180, guihg / 2, 1.5, 1.5, 0, c_white, 1);
+        
+        if (timer > 15)
+            game_end();
+        
+        exit;
+    }
+    
+    draw_set_valign(fa_middle);
+    draw_set_halign(fa_center);
+    draw_set_color(c_white);
+    draw_set_font(fnt_mainbig);
+    draw_set_alpha(1);
+    lines = string_split(dialogueLines[noDialogue], "\n");
+    
+    for (i = 0; i < array_length(lines); i++)
+        draw_text(guiwd / 2, (guihg / 2) + (i * 30), lines[i]);
+    
+    if (button1_p() || button3_h())
+        noDialogue++;
+    
+    if (noDialogue >= array_length(dialogueLines))
+    {
+        timer = 0;
+        var _snd = snd_play(snd_knight_cut2);
+        snd_volume(_snd, 8, 0);
+        snd_pitch(_snd, 0.06);
+        _snd = snd_play(snd_knight_cut2);
+        snd_volume(_snd, 8, 0);
+        snd_pitch(_snd, 0.1);
+        _snd = snd_play(snd_knight_cut2);
+        snd_volume(_snd, 8, 0);
+        snd_pitch(_snd, 0.12);
+        _snd = snd_play(snd_knight_cut2);
+        snd_volume(_snd, 8, 0);
+        snd_pitch(_snd, 0.18);
+        _snd = snd_play(snd_knight_cut2);
+        snd_volume(_snd, 8, 0);
+        snd_pitch(_snd, 0.24);
+    }
+    
+    exit;
+}
+
 var scale = 2;
 var dialoguewidth = guiwd / 2;
 var dialogueheight = guihg - (50 * scale);
@@ -9,27 +60,21 @@ draw_set_font(fnt_mainbig);
 FramesToComplete = 60;
 FramesBeforeStart = 30;
 Distance = 50;
-
 tween = 0;
+
 if (timer > FramesBeforeStart)
-{
-    tween = ((timer-FramesBeforeStart)/FramesToComplete) == 1 ? 1 : 1 - power(2, -10 * (((timer-FramesBeforeStart)/FramesToComplete)))
-}
-/*
-draw_sprite_ext(spr_dialogueboxyellow, 1, dialoguewidth, dialogueheight - tween*Distance, 4.2 * scale, 1.3 * scale, image_angle, c_white, tween);
-draw_sprite_ext(spr_dialogueboxyellow, 0, dialoguewidth, dialogueheight - tween*Distance, 4.1 * scale, 1.2 * scale, image_angle, image_blend, tween);
-draw_set_halign(fa_center);
-draw_text(guiwd / 2, dialogueheight - (30 * scale), "Phoenix");
-*/
+    tween = (((timer - FramesBeforeStart) / FramesToComplete) == 1) ? 1 : (1 - power(2, -10 * ((timer - FramesBeforeStart) / FramesToComplete)));
+
+if (fadeToGame)
+    tween = ((timer / (FramesToComplete / 2)) == 1) ? 0 : power(2, -10 * (timer / (FramesToComplete / 2)));
+
 space = x;
 height = 200;
-
 image_alpha = tween;
 arg0 = space;
-arg1 = y-tween*Distance;
+arg1 = y - (tween * Distance);
 arg2 = guiwd - space;
-arg3 = y+height-tween*Distance;
-
+arg3 = (y + height) - (tween * Distance);
 draw_set_color(c_black);
 d_rectangle(arg0 + 20, arg1 + 20, arg2 - 20, arg3 - 20, false);
 
@@ -74,16 +119,52 @@ else
     draw_sprite_ext(spr_textbox_topleft, 0, arg2 + 1, arg3 + 1, -2, -2, 0, c_white, image_alpha);
 }
 
-draw_set_color(-1);
-
+draw_set_alpha(tween);
 draw_set_font(fnt_mainbig);
-draw_set_color(c_yellow)
-draw_set_halign(fa_center)
-draw_text(dialoguewidth, arg1+20, "Warning")
+draw_set_color(c_yellow);
+draw_set_halign(fa_center);
+draw_text(dialoguewidth, arg1 + 20, "Warning");
 draw_set_font(fnt_main);
 draw_set_color(c_white);
-draw_text(dialoguewidth, arg1+50, "This is an unofficial fork of")
+draw_text(dialoguewidth, arg1 + 60, "This is an unofficial fork of CMD28's DELTARUNE: Network mod.");
+draw_text(dialoguewidth, arg1 + 80, "Please expect bugs, as this version is still in beta. If you'd");
+draw_text(dialoguewidth, arg1 + 100, "like to report any bugs, please send them to the fork developer.");
+draw_text(dialoguewidth, arg1 + 120, "Knowing this, would you still like to PROCEED?");
+draw_set_font(fnt_mainbig);
+draw_set_color((selected == 0) ? c_yellow : c_white);
+draw_text(dialoguewidth - 60, arg1 + 145, "YES");
+draw_set_color((selected == 1) ? c_yellow : c_white);
+draw_text(dialoguewidth + 60, arg1 + 145, "NO");
+draw_set_color(-1);
 
-draw_text(dialoguewidth, arg1+80, "CMD28's DELTARUNE: Network mod.")
+if (keyboard_check_pressed(vk_left) && selected != 0)
+{
+    selected = 0;
+    snd_play(snd_menumove);
+}
 
-timer++
+if (keyboard_check_pressed(vk_right) && selected != 1)
+{
+    selected = 1;
+    snd_play(snd_menumove);
+}
+
+if (button1_p() && !fadeToGame)
+{
+    snd_play(snd_select);
+    
+    if (selected == 0)
+    {
+        fadeToGame = true;
+        timer = 0;
+    }
+    else
+    {
+        noDialogue = 0;
+    }
+}
+
+if (timer > FramesBeforeStart && fadeToGame)
+    obj_initializer2.acceptWarning = true;
+
+timer++;
