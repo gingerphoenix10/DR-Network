@@ -1,4 +1,4 @@
-﻿if (!instance_exists(1645))
+if (!instance_exists(1645))
 {
     scr_input_manager_process();
 }
@@ -26,9 +26,9 @@ if (global.is_console)
     }
 }
 var CH = string(global.chapter);
-if (audio_group_is_loaded(1))
+if (audio_group_is_loaded(1) && (ONLINE_DEBUG() || acceptWarning))
 {
-    roomchoice = 12;
+    roomchoice = PLACE_CONTACT;
     menu_go = 0;
     if (scr_chapter_save_file_exists(global.chapter) || ossafe_file_exists("dr.ini"))
     {
@@ -48,7 +48,7 @@ if (audio_group_is_loaded(1))
         {
             global.screen_border_alpha = 0;
         }
-        roomchoice = 247;
+        roomchoice = room_intro_ch5;
     }
     if (menu_go == 2)
     {
@@ -58,7 +58,7 @@ if (audio_group_is_loaded(1))
         }
         scr_windowcaption("DELTARUNE");
         global.tempflag[10] = 1;
-        roomchoice = 67;
+        roomchoice = room_legend;
         global.plot = 0;
     }
     if (menu_go == 3)
@@ -67,11 +67,11 @@ if (audio_group_is_loaded(1))
         {
             global.screen_border_alpha = 0;
         }
-        roomchoice = 246;
+        roomchoice = room_title_placeholder;
     }
     if (ONLINE_DEBUG())
     {
-        roomchoice = 75;
+        roomchoice = PLACE_MENU;
     }
     room_goto(roomchoice);
 }

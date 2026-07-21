@@ -9,7 +9,7 @@
     "BackgroundColor": 4278190080,
     "DrawBackgroundColor": false,
     "CreationCodeEntry": null,
-    "Flags": "ClearViewBackground, IsGMS2_3, IsGMS2",
+    "Flags": "EnableViews, ClearViewBackground, DoNotClearDisplayBuffer, IsGMS2_3, IsGMS2",
     "World": false,
     "Top": 0,
     "Left": 0,
