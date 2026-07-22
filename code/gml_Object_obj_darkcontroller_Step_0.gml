@@ -1630,7 +1630,7 @@ if (global.interact == 5)
         global.submenu = 0;
         var totalOptions = 4;
         if (global.is_console)
-            totalOptions = 5; // Consoles have an extra Network option. Allow scrolling to this element
+            totalOptions = 5;
 
         if (left_p())
         {
@@ -1719,11 +1719,22 @@ if (global.interact == 5)
             }
         } else if (button1_p() && onebuffer < 0 && twobuffer < 0 && global.menucoord[0] == 5)
         {
-            selectnoise = 1;
-            close = 1;
             // On consoles, a Network option is added to the menu bar. Open the online menu if clicked
-            instance_create(x, y, obj_onlinemenu);
-            global.interact = 8;
+            if (global.menuno == 0)
+            {
+                selectnoise = 1;
+                global.menuno = -1;
+                charcon = 0;
+                deschaver = 0;
+                
+                with (obj_mainchara)
+                {
+                    threebuffer = 2;
+                    twobuffer = 2;
+                }
+                instance_create(x, y, obj_onlinemenu);
+                global.interact = 8;
+            }
         }
         
         if (button2_p() && twobuffer < 0)
