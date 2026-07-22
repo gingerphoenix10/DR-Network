@@ -1,3 +1,4 @@
+// this code sucks but idrc, it's a tiny feature that just needs to work
 var guiwd = display_get_gui_width();
 var guihg = display_get_gui_height();
 
@@ -137,13 +138,13 @@ draw_set_color((selected == 1) ? c_yellow : c_white);
 draw_text(dialoguewidth + 60, arg1 + 145, "NO");
 draw_set_color(-1);
 
-if (keyboard_check_pressed(vk_left) && selected != 0)
+if (left_p() && selected != 0)
 {
     selected = 0;
     snd_play(snd_menumove);
 }
 
-if (keyboard_check_pressed(vk_right) && selected != 1)
+if (right_p() && selected != 1)
 {
     selected = 1;
     snd_play(snd_menumove);

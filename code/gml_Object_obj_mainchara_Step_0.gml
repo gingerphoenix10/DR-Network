@@ -94,10 +94,10 @@ if (!roomenterfreezeend)
 }
 if (global.interact == 0)
 {
-    if (button3_p() && threebuffer < 0 && !instance_exists(1164))
+    if (button3_p() && threebuffer < 0 && !instance_exists(obj_climb_kris))
     {
         var haveflowery = false;
-        with (1125)
+        with (obj_caterpillar_generic)
         {
             if (name == "flowery")
             {
@@ -106,11 +106,11 @@ if (global.interact == 0)
         }
         if (global.flag[7] == 0 && (battlemode == 0 || !battle_menu_block) && swordmode == 0)
         {
-            with (1390)
+            with (obj_darkcontroller)
             {
                 threebuffer = 2;
             }
-            with (1651)
+            with (obj_overworldc)
             {
                 movenoise = 1;
                 threebuffer = 2;

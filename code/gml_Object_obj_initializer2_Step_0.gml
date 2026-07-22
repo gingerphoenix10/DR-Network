@@ -26,9 +26,8 @@ if (global.is_console)
     }
 }
 var CH = string(global.chapter);
-if ((audio_group_is_loaded(1) || global.is_realconsole) && (ONLINE_DEBUG() || acceptWarning) )
+if (audio_group_is_loaded(1) && (ONLINE_DEBUG() || acceptWarning) )
 {
-    // Idk why but the audio group never loads. Might've just been how I was running the game on my switch. Will look into
     roomchoice = PLACE_CONTACT;
     menu_go = 0;
     if (scr_chapter_save_file_exists(global.chapter) || ossafe_file_exists("dr.ini"))
@@ -75,4 +74,9 @@ if ((audio_group_is_loaded(1) || global.is_realconsole) && (ONLINE_DEBUG() || ac
         roomchoice = PLACE_MENU;
     }
     room_goto(roomchoice);
+} else if (audio_group_is_loaded(1) && global.is_console && !instance_exists(obj_unofficialwarning))
+{
+    instance_create(100, 200, obj_unofficialwarning);
+    if (instance_exists(obj_prefetchtex))
+        instance_destroy(obj_prefetchtex);
 }

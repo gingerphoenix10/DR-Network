@@ -469,32 +469,22 @@ if (global.interact == 5)
         {
             global.submenucoord[34]++;
             
-            // Override the "Return to Title" button to instead open the online menu. I wanted to replace the Back button but idk where the code for that is
-            // The config menu background will persist even after closing, but you can still move so switching room will remove it
             if (global.submenucoord[34] == 1)
             {
-                if (global.is_console)
-                {
-                    instance_create(x, y, obj_onlinemenu);
-                    global.interact = 8;
-                }
-                else
-                {
-                    snd_free_all();
-                    var lastfade = instance_create(camerax(), cameray(), obj_fadeout);
-                    lastfade.fadespeed = 0.05;
-                    lastfade.x = camerax() - 20;
-                    lastfade.y = cameray() - 20;
-                    lastfade.image_xscale *= 3;
-                    lastfade.image_yscale *= 2;
-                    lastfade.depth = -900000;
-                    
-                    with (obj_border_controller)
-                        hide_border(0.05);
-                }
+                snd_free_all();
+                var lastfade = instance_create(camerax(), cameray(), obj_fadeout);
+                lastfade.fadespeed = 0.05;
+                lastfade.x = camerax() - 20;
+                lastfade.y = cameray() - 20;
+                lastfade.image_xscale *= 3;
+                lastfade.image_yscale *= 2;
+                lastfade.depth = -900000;
+                
+                with (obj_border_controller)
+                    hide_border(0.05);
             }
             
-            if (global.submenucoord[34] >= 50 && !global.is_console)
+            if (global.submenucoord[34] >= 50)
                 game_restart_true();
         }
         
@@ -1638,12 +1628,15 @@ if (global.interact == 5)
     if (global.menuno == 0)
     {
         global.submenu = 0;
-        
+        var totalOptions = 4;
+        if (global.is_console)
+            totalOptions = 5; // Consoles have an extra Network option. Allow scrolling to this element
+
         if (left_p())
         {
             if (global.menucoord[0] == 0)
             {
-                global.menucoord[0] = 4;
+                global.menucoord[0] = totalOptions;
                 movenoise = 1;
             }
             else
@@ -1659,7 +1652,7 @@ if (global.interact == 5)
         
         if (right_p())
         {
-            if (global.menucoord[0] == 4)
+            if (global.menucoord[0] == totalOptions)
             {
                 global.menucoord[0] = 0;
                 movenoise = 1;
@@ -1675,7 +1668,9 @@ if (global.interact == 5)
             }
         }
         
-        if (button1_p() && onebuffer < 0 && twobuffer < 0)
+        close = 0;
+        
+        if (button1_p() && onebuffer < 0 && twobuffer < 0 && global.menucoord[0] != 5)
         {
             selectnoise = 1;
             onebuffer = 2;
@@ -1722,9 +1717,14 @@ if (global.interact == 5)
                 global.submenu = 30;
                 global.submenucoord[30] = 0;
             }
+        } else if (button1_p() && onebuffer < 0 && twobuffer < 0 && global.menucoord[0] == 5)
+        {
+            selectnoise = 1;
+            close = 1;
+            // On consoles, a Network option is added to the menu bar. Open the online menu if clicked
+            instance_create(x, y, obj_onlinemenu);
+            global.interact = 8;
         }
-        
-        close = 0;
         
         if (button2_p() && twobuffer < 0)
             close = 1;

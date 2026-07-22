@@ -1455,5 +1455,5 @@ function IsPVP()
 
 function ONLINE_DEBUG()
 {
-    return true;
+    return false;
 }

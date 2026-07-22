@@ -1,5 +1,5 @@
 global.is_realconsole = scr_is_switch_os() || os_type == os_ps4 || os_type == os_ps5;
-global.is_console = global.is_realconsole; // This can be modified to add "|| ONLINE_DEBUG()" if testing that
+global.is_console = global.is_realconsole || true; // This can be modified to add "|| ONLINE_DEBUG()" if testing that
 
 if (!global.is_console)
     window_enable_borderless_fullscreen(true);
@@ -121,7 +121,10 @@ loadtex = -4;
 if (global.is_console)
     loadtex = instance_create(0, 0, obj_prefetchtex);
 else
+{
     scr_prefetch_textures();
+    instance_create(100, 200, obj_unofficialwarning);
+}
 
 textures_loaded = false;
 acceptWarning = false;
@@ -130,8 +133,6 @@ enum UnknownEnum
 {
     Value_0
 }
-
-instance_create(100, 200, obj_unofficialwarning);
 
 if (global.is_realconsole)
 {
