@@ -1,5 +1,5 @@
 global.is_realconsole = scr_is_switch_os() || os_type == os_ps4 || os_type == os_ps5;
-global.is_console = global.is_realconsole || true; // This can be modified to add "|| ONLINE_DEBUG()" if testing that
+global.is_console = global.is_realconsole; // This can be modified to add "|| ONLINE_DEBUG()" if testing that
 
 if (!global.is_console)
     window_enable_borderless_fullscreen(true);
