@@ -1,8 +1,10 @@
-﻿function scr_dokiadd(arg0, arg1)
+function scr_dokiadd(arg0, arg1)
 {
     with (300)
     {
-        doki += (arg1 * 50);
+        doki += arg1;
+        if (ONLINE_DEBUG())
+            doki *= 50;
         if (doki < 0)
         {
             doki = 0;
