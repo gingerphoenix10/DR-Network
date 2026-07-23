@@ -1,2 +1,2 @@
-﻿targetroom = 260;
-targetdoor = 1284;
+﻿targetroom = room_truelab_prebed;
+targetdoor = obj_markert;

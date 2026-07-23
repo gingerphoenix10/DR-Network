@@ -1,2 +1,2 @@
-﻿targetroom = 259;
-targetdoor = 1273;
+﻿targetroom = room_truelab_redlever;
+targetdoor = obj_markerA;

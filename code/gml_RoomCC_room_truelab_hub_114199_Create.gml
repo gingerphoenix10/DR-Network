@@ -1,2 +1,2 @@
-﻿sprite_index = 8584;
+﻿sprite_index = spr_plant_dark;
 msgsetup("* (It's a fake plant.)/%");

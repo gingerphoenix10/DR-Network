@@ -1,4 +1,4 @@
-﻿sprite_index = 8590;
+﻿sprite_index = spr_dogbowl_empty;
 msgsetup("* (It's an empty dog food bowl.)/%");
-image_blend = 8421504;
+image_blend = c_gray;
 depth = 999999;

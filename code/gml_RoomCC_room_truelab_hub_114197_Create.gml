@@ -1,4 +1,4 @@
-﻿sprite_index = 8572;
+﻿sprite_index = spr_tornnote;
 visible = 1;
 depth = 900000;
 msgsetup("* (There's a note on the ground...^1)&* (You can't make it all out.)/");
