@@ -1,9 +1,17 @@
 {
+    "Windows v250": {
+        "Data": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\DELTARUNE\\chapter5_windows\\data.win",
+        "OutputFile": "data.win"
+    },
     "Windows v244": {
         "Data": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\DELTARUNE\\chapter5_windows\\online_install\\data.win",
         "OutputFile": "data.win"
     },
-    "Nintendo Switch": {
+    "Windows v240": {
+        "Data": "C:\\Users\\bcher\\Downloads\\DELTARUNE\\chapter5_windows\\data.win",
+        "OutputFile": "data.win"
+    },
+    "Nintendo Switch v240": {
         "Data": "C:\\Program Files (x86)\\Steam\\steamapps\\content\\app_1671210\\DELTARUNE 1.06 [0100A0D022A68800][v393216][UPD]\\Program #0\\1\\chapter5_switch\\game.win",
         "OutputFile": "game.win"
     }

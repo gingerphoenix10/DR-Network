@@ -1,21 +1,33 @@
 # Builds the modded data and xdelta files with the UndertaleModTool
 # project applied for all base data files provided in BuildSources.json
 
-# This script required UndertaleModCli.exe (CLI version of UndertaleModTool)
+# This script requires UndertaleModCli.exe (CLI version of UndertaleModTool)
 # located in either the project folder, or in your PATH.
 #
-# For Xdelta generation (on by default) you'll also need either
-# xdelta.exe or xdelta3.exe (same thing, just renamed) in one of the same paths
+# For generation of patches, these executables are needed in one of the same locations:
+# xdelta.exe / xdelta3.exe - xdelta
+# G3MTool.exe - g3mpatch
+# Deltamod is planned, however will be delayed until DeltamodCLI is more stable
 
 import os
+import sys
 import json
 import subprocess
+import time
+
+buildXdelta = True
+buildG3MPatch = False
 
 tempPath = dir_path = os.path.dirname(os.path.realpath(__file__))
 os.chdir(tempPath)
 
 buildPath = "build"
-buildXdelta = True
+
+stdout = subprocess.DEVNULL
+if ("-v" in sys.argv) or ("--verbose" in sys.argv):
+    stdout = None
+
+buildStart = time.time()
 
 # Create folders & check file validity
 if not os.path.isdir(buildPath):
@@ -39,7 +51,7 @@ if type(data) == list:
 
 # Begin building sources
 for key in data:
-    print(f"\nAttempting to build {key}.")
+    print(f"\nAttempting to build {key}")
 
     # JSON validation
     if not "Data" in data[key]:
@@ -61,7 +73,7 @@ for key in data:
     # Start building project
     outputFile = os.path.join(sourceBuild, data[key]["OutputFile"])
     try:
-        subprocess.run(["UndertaleModCli.exe", "project", "build", "project.json", "-s", data[key]["Data"], "-d", outputFile]) 
+        subprocess.run(["UndertaleModCli.exe", "project", "build", "project.json", "-s", data[key]["Data"], "-d", outputFile], stdout=stdout) 
     except FileNotFoundError:
         print("Unable to locate UndertaleModCli. Cancelling")
         exit()
@@ -79,28 +91,61 @@ for key in data:
     if not os.path.isfile(outputFile):
         print(f"Something went wrong whilst building source {key}")
         continue
-
-    if not buildXdelta:
-        print("Success!")
-        continue
+    print("Build successful")
 
     # Post-build (xdelta)
-    print("Build successful. Generating Xdelta")
-    outputXdelta = os.path.join(sourceBuild, key+".xdelta")
-    command = ["xdelta.exe", "-e", "-s", data[key]["Data"], outputFile, outputXdelta]
-    try:
-        subprocess.run(command) 
-    except FileNotFoundError:
+    if buildXdelta:
+        print("Generating xdelta")
+        outputXdelta = os.path.join(sourceBuild, key+".xdelta")
+        command = ["xdelta.exe", "-f", "-e", "-s", data[key]["Data"], outputFile, outputXdelta]
         try:
-            command[0] = "xdelta3.exe"
-            subprocess.run(command) 
+            subprocess.run(command, stdout=stdout)
         except FileNotFoundError:
-            print("Build Xdelta is enabled, but xdelta.exe / xdelta3.exe could not be located. Skipping xdeltas")
-            buildXdelta = False
-            continue
-        
-    if not os.path.isfile(outputXdelta):
-        print(command)
-        print(f"Something went wrong whilst generating xdelta for source {key}")
-        continue
+            try:
+                command[0] = "xdelta3.exe"
+                subprocess.run(command, stdout=stdout)
+            except FileNotFoundError:
+                print("Build xdelta is enabled, but xdelta.exe / xdelta3.exe could not be located. Skipping xdeltas")
+                buildXdelta = False
+
+        if buildXdelta:
+            if not os.path.isfile(outputXdelta):
+                print(f"Something went wrong whilst generating xdelta for source {key}")
+
+    # Post-build (g3mpatch)
+    if buildG3MPatch:
+        print("Generating g3mpatch")
+        outputG3M = os.path.join(sourceBuild, key+".g3mpatch")
+        try:
+            subprocess.run(["G3MTool.exe", "patch", "create", data[key]["Data"], outputFile, outputG3M], stdout=stdout)
+        except FileNotFoundError:
+            print("Build g3mpatch is enabled, but G3MTool.exe could not be located. Skipping g3mpatches")
+            buildG3MPatch = False
+
+        if buildG3MPatch:
+            if not os.path.isfile(outputG3M):
+                print(f"Something went wrong whilst generating g3mpatch for source {key}")
+
     print("Success!")
+
+# Over-complicated elapsed time printing
+elapsed = time.time() - buildStart
+
+hours, rem = divmod(elapsed, 3600)
+minutes, rem = divmod(rem, 60)
+seconds, rem = divmod(rem, 1)
+milliseconds = int(rem * 1000)
+
+parts = []
+
+if hours:
+    parts.append(f"{int(hours)} hour{'s' if hours != 1 else ''}")
+if minutes:
+    parts.append(f"{int(minutes)} minute{'s' if minutes != 1 else ''}")
+if seconds:
+    parts.append(f"{int(seconds)} second{'s' if seconds != 1 else ''}")
+
+# Always show milliseconds
+parts.append(f"{milliseconds} millisecond{'s' if milliseconds != 1 else ''}")
+
+print(f"\nAll builds complete in {' '.join(parts)}!")
