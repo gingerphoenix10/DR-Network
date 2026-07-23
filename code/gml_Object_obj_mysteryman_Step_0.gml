@@ -2,7 +2,7 @@ scr_depth();
 if (myinteract == 1 && con == 0)
 {
     con = 1;
-    //snd_play(snd_mysterygo);
+    snd_play(snd_mysterygo);
     image_index = 1;
 }
 if (con == 1)

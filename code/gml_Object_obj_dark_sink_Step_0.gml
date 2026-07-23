@@ -4,9 +4,8 @@
     {
         global.interact = 0;
         myinteract = 0;
-        with (1198)
-        {
+        
+        with (obj_mainchara)
             onebuffer = 3;
-        }
     }
 }

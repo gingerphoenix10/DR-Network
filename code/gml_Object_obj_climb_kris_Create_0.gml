@@ -1,7 +1,6 @@
-﻿with (1198)
-{
+﻿with (obj_mainchara)
     setxy(room_width * 4, room_height * 4);
-}
+
 scr_depth();
 siner = 0;
 timer = 0;
@@ -62,10 +61,10 @@ cuttimer = 0;
 dir = 0;
 fall_speed_cap = 10;
 dodraw = true;
-if (i_ex(744))
-{
+
+if (i_ex(obj_rotating_tower_controller_new))
     dodraw = false;
-}
+
 falseloop = 0;
 falseloopx[0] = 120;
 falseloopx[1] = 520;
@@ -73,15 +72,17 @@ mysurface = -1;
 boosting = false;
 reticle_hint_col_inactive = make_color_rgb(200, 200, 200);
 reticle_hint_col_active = make_color_rgb(255, 200, 132);
-reticle_hint_col_boost = merge_color(16776960, 16777215, 0.5);
+reticle_hint_col_boost = merge_color(c_aqua, c_white, 0.5);
 onrotatingtower = false;
-if (i_ex(744))
+
+if (i_ex(obj_rotating_tower_controller_new))
 {
     onrotatingtower = true;
     falseloop = 1;
     falseloopx[0] = 0;
     falseloopx[1] = obj_rotating_tower_controller_new.tower_circumference;
 }
+
 remx = x;
 remy = y;
 safex = x;

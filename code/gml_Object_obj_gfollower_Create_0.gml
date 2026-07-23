@@ -7,11 +7,11 @@ function msgbetter(arg0)
     global.msgno++;
 }
 
-image_blend = merge_color(8421504, 16777215, 0.3);
-spr_idle = 8581;
-spr_talk = 8581;
-spr_idleg = 8582;
-spr_talkg = 8582;
+image_blend = merge_color(c_gray, c_white, 0.3);
+spr_idle = spr_followerl1;
+spr_talk = spr_followerl1;
+spr_idleg = spr_g_follower_1;
+spr_talkg = spr_g_follower_1;
 myinteract = 0;
 talked = 0;
 tempvar = 0;

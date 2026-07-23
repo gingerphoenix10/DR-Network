@@ -1,7 +1,6 @@
 ﻿if (global.entrance == 0)
-{
     global.start_in_platmode = true;
-}
+
 layer_set_visible("DEBUG_ASSETS", 0);
 layer_set_visible("NPCs", 0);
 con = 0;
@@ -12,7 +11,7 @@ can_reset = false;
 draw_grayscale = false;
 surf = -4;
 killer_bullet = -4;
-marker_manager = instance_create(0, 0, 1722);
+marker_manager = instance_create(0, 0, obj_plat_marker_sequence_manager);
 PROGRESS_FLAG = 1844;
 _INTRO_BIT = 0;
 _SHURIKEN_BIT = 1;
@@ -25,6 +24,7 @@ _FALLBIT_3B = 11;
 _FALLBIT_3C = 12;
 _FALLBIT_4 = 13;
 _CLEAR_BIT = 14;
+
 if (scr_debug())
 {
     if (global.tempflag[90] == 0.001)
@@ -33,33 +33,31 @@ if (scr_debug())
         global.flag[PROGRESS_FLAG] = 0;
         global.facing = 1;
         global.start_in_platmode = false;
-        with (1198)
-        {
+        
+        with (obj_mainchara)
             setxy(12, 5716);
-        }
-        with (1389)
+        
+        with (obj_caterpillarchara)
         {
             if (name == "susie")
-            {
                 setxy(obj_mainchara.x - 6, obj_mainchara.y - 16);
-            }
             else
-            {
                 setxy(obj_mainchara.x - 2, obj_mainchara.y - 12);
-            }
+            
             scr_caterpillar_interpolate(name);
         }
     }
-    if (keyboard_check(80))
-    {
+    
+    if (keyboard_check(ord("P")))
         global.tempflag[90] = 0.002;
-    }
+    
     if (global.tempflag[90] == 0.002)
     {
         global.tempflag[90] = 0;
         scr_flag_set_ext(PROGRESS_FLAG, _FREEWILL_BIT, 0, 2);
         global.start_in_platmode = true;
     }
+    
     if (global.tempflag[90] == 0.003)
     {
         global.tempflag[90] = 0;
@@ -67,23 +65,21 @@ if (scr_debug())
         scr_flag_set_ext(PROGRESS_FLAG, _FREEWILL_BIT, 1, 2);
         global.facing = 1;
         global.start_in_platmode = false;
-        with (1198)
-        {
+        
+        with (obj_mainchara)
             setxy(12, 5716);
-        }
-        with (1389)
+        
+        with (obj_caterpillarchara)
         {
             if (name == "susie")
-            {
                 setxy(obj_mainchara.x - 6, obj_mainchara.y - 16);
-            }
             else
-            {
                 setxy(obj_mainchara.x - 2, obj_mainchara.y - 12);
-            }
+            
             scr_caterpillar_interpolate(name);
         }
     }
+    
     if (global.tempflag[90] == 0.004)
     {
         global.tempflag[90] = 0;
@@ -95,25 +91,20 @@ if (scr_debug())
 get_room_progress = function()
 {
     if (scr_flag_get_ext(PROGRESS_FLAG, _CLEAR_BIT))
-    {
         return 9;
-    }
+    
     if (scr_flag_get_ext(PROGRESS_FLAG, _FALLBIT_4))
-    {
         return 8;
-    }
+    
     if (scr_flag_get_ext(PROGRESS_FLAG, _FALLBIT_3A))
-    {
         return 5;
-    }
+    
     if (scr_flag_get_ext(PROGRESS_FLAG, _FALLBIT_2))
-    {
         return 3;
-    }
+    
     if (scr_flag_get_ext(PROGRESS_FLAG, _FALLBIT_1A))
-    {
         return 1;
-    }
+    
     return 0;
 };
 
@@ -173,6 +164,7 @@ failed_jump_loops = function()
                             x: "mid",
                             y: "topmid"
                         };
+                        
                         if (global.lang == "ja")
                         {
                             sf = 
@@ -181,6 +173,7 @@ failed_jump_loops = function()
                                 y: 12
                             };
                         }
+                        
                         scr_smallface(0, 35, 0, sf.x, sf.y, small_text);
                         scr_speaker("ralsei");
                         msgsetsubloc(0, "\\EG* She meant next next next time.\\f0", (global.lang == "ja") ? stringset("&\t\t\t") : stringset("&"), "obj_dw_fcastle_top_ascent_slash_Create_0_gml_114_0");
@@ -216,12 +209,14 @@ failed_jump_loops = function()
                         d_make_plat(0, 0);
                     }
                 }
+                
                 furthest_room_progress = current_room_progress;
             }
         }
         else if (!waiting_for_free_will_scene)
         {
             failcounter++;
+            
             if (failcounter == 1)
             {
                 scr_speaker("ralsei");
@@ -229,6 +224,7 @@ failed_jump_loops = function()
                 d_make_plat(0, 1);
                 scr_flag_set_ext(PROGRESS_FLAG, _FREEWILL_BIT, 1, 2);
             }
+            
             if (failcounter >= 2)
             {
                 failcounter = 2;
@@ -236,16 +232,15 @@ failed_jump_loops = function()
                 scr_flag_set_ext(PROGRESS_FLAG, _FREEWILL_BIT, 2, 2);
             }
         }
+        
         global.flag[1901] = global.flag[1901] + 1;
+        
         if (global.flag[1901] >= 10 && global.flag[1902] == 0 && failcounter >= 3)
-        {
             wants_to_reveal_wall = true;
-        }
     }
+    
     if (ONLINE_DEBUG())
-    {
         current_room_progress = 0;
-    }
 };
 
 reset_all_stage_elements = function()
@@ -254,44 +249,42 @@ reset_all_stage_elements = function()
     {
         can_reset = 0;
         ascent_con = 0;
-        with (824)
+        
+        with (obj_plat_follower)
         {
             if (is_platform_mode == 3)
-            {
                 drop_off_platform_mode();
-            }
         }
-        with (123)
+        
+        with (obj_slashpusher)
         {
             if (autocloses)
             {
                 closed_state = 0;
                 su_act.blocked = true;
-                sprite_index = 7578;
+                sprite_index = spr_plat_slashpusher;
             }
             else if (strength < 15)
             {
                 closed_state = 1;
                 su_act.blocked = false;
-                sprite_index = 696;
+                sprite_index = spr_plat_slashpusher_semiclosed;
+                
                 with (su_act)
-                {
                     activetimer = 50;
-                }
             }
         }
-        with (683)
-        {
+        
+        with (obj_plat_vinehook_small)
             recover();
-        }
     }
 };
 
 create_scary_bullet = function(arg0, arg1)
 {
-    with (instance_create(obj_plat_player.x + (arg0 * 500), obj_plat_player.y - 40, 38))
+    with (instance_create(obj_plat_player.x + (arg0 * 500), obj_plat_player.y - 40, obj_plat_bulletred))
     {
-        sprite_index = 2865;
+        sprite_index = spr_plat_enm_shuriken_3d;
         image_speed = 1;
         hspeed = arg1;
         image_xscale = 1;
@@ -302,26 +295,27 @@ create_scary_bullet = function(arg0, arg1)
         neutralizable = true;
         neutralize_effect = false;
         damage = 60;
-        with (866)
+        
+        with (obj_plat_cam_nudgezone)
         {
             if (nudgex != 0)
-            {
                 x = xstart;
-            }
         }
         
         step_func = function()
         {
             timer++;
+            
             with (scr_afterimage_monochrome(255, true))
             {
                 image_alpha = 0.1;
-                image_blend = 255;
+                image_blend = c_red;
             }
+            
             if ((timer % 8) == 0 && scr_onscreen_tolerance(self, 100))
             {
-                snd_stop(607);
-                snd_play(607, lerp(0.3, 1, abs(x - obj_plat_player.x) / 200), 0.4);
+                snd_stop(motor_upper_quick_bc);
+                snd_play(motor_upper_quick_bc, lerp(0.3, 1, abs(x - obj_plat_player.x) / 200), 0.4);
             }
         };
     }

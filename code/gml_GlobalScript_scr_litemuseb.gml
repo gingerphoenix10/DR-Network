@@ -7,7 +7,9 @@
         scr_writetext(0, "x", 0, 0);
         exit;
     }
+    
     var is_weapon = get_weapon_by_lw_id(arg1) != -4;
+    
     if (is_weapon && !scr_lweapon_can_equip(arg1))
     {
         scr_speaker("no_name");
@@ -15,82 +17,93 @@
         scr_writetext(0, "x", 0, 0);
         exit;
     }
+    
     switch (arg1)
     {
         case 0:
             global.msg[0] = stringsetloc("* You grasped at nothing./%%", "scr_litemuseb_slash_scr_litemuseb_gml_6_0");
             break;
+        
         case 1:
             global.msg[0] = stringsetloc("* You drank the hot chocolate^1.&* It tasted wonderful^1.&* Your throat tightened.../%", "scr_litemuseb_slash_scr_litemuseb_gml_9_0");
-            snd_play(451);
+            snd_play(snd_swallow);
             scr_writetext(0, "x", 0, 0);
             script_execute(scr_litemshift, arg0, 0);
             break;
+        
         case 2:
             global.msg[0] = stringsetloc("* You equipped the Pencil./%", "scr_litemuseb_slash_scr_litemuseb_gml_18_0");
             scr_lweaponeq(arg0, arg1);
-            snd_play(442);
+            snd_play(snd_item);
             scr_writetext(0, "x", 0, 0);
             break;
+        
         case 3:
             global.msg[0] = stringsetloc("* You re-applied the bandage.", "scr_litemuseb_slash_scr_litemuseb_gml_26_0");
             script_execute(scr_lrecoitem, 1);
             script_execute(scr_litemshift, arg0, 0);
             break;
+        
         case 4:
             global.msg[0] = stringsetloc("* You held out the flowers^1.&* A floral scent fills the air^1.&* Nothing happened./%", "scr_litemuseb_slash_scr_litemuseb_gml_34_0");
             scr_writetext(0, "x", 0, 0);
             break;
+        
         case 5:
             global.msg[0] = stringsetloc("* You looked at the junk ball in admiration^1.&* Nothing happened./%", "scr_litemuseb_slash_scr_litemuseb_gml_42_0");
             scr_writetext(0, "x", 0, 0);
             break;
+        
         case 6:
             global.msg[0] = stringsetloc("* You equipped the Halloween Pencil./%", "scr_litemuseb_slash_scr_litemuseb_gml_48_0");
             scr_lweaponeq(arg0, arg1);
-            snd_play(442);
+            snd_play(snd_item);
             scr_writetext(0, "x", 0, 0);
             break;
+        
         case 7:
             global.msg[0] = stringsetloc("* You equipped the Lucky Pencil./%", "scr_litemuseb_slash_scr_litemuseb_gml_56_0");
             scr_lweaponeq(arg0, arg1);
-            snd_play(442);
+            snd_play(snd_item);
             scr_writetext(0, "x", 0, 0);
             break;
+        
         case 8:
             global.msg[0] = stringsetloc("* You used the Egg./%", "scr_litemuseb_slash_scr_litemuseb_gml_63_0");
-            snd_play(305);
+            snd_play(snd_egg);
             scr_writetext(0, "x", 0, 0);
             break;
+        
         case 9:
             msgsetloc(0, "* You held the cards^1.&* They felt flimsy between your fingers./%", "scr_litemuseb_slash_scr_litemuseb_gml_69_0");
             scr_writetext(0, "x", 0, 0);
             break;
+        
         case 10:
             var consume_item = 0;
             var have_susie = scr_havechar(2);
             var sans_npc = 0;
-            if (i_ex(1238))
+            
+            if (i_ex(obj_marker))
             {
-                with (1238)
+                with (obj_marker)
                 {
-                    if (sprite_index == 1244 && abs(obj_mainchara.x - x) <= 20 && abs(obj_mainchara.y - y) <= 40)
-                    {
+                    if (sprite_index == spr_sans_d && abs(obj_mainchara.x - x) <= 20 && abs(obj_mainchara.y - y) <= 40)
                         sans_npc = 1;
-                    }
                 }
             }
+            
             var alphys_npc = 0;
-            if (i_ex(1221))
+            
+            if (i_ex(obj_npc_sign))
             {
-                with (1221)
+                with (obj_npc_sign)
                 {
-                    if (sprite_index == 819 && abs(obj_mainchara.x - x) <= 20 && abs(obj_mainchara.y - y) <= 40)
-                    {
+                    if (sprite_index == spr_alphysd && abs(obj_mainchara.x - x) <= 20 && abs(obj_mainchara.y - y) <= 40)
                         alphys_npc = 1;
-                    }
                 }
             }
+            
             if (sans_npc)
             {
                 consume_item = 1;
@@ -145,16 +158,19 @@
                 msgnextloc("* (You accept this destruction as part of life...)/%", "scr_litemuseb_slash_scr_litemuseb_gml_151_0");
                 scr_writetext(0, "x", 0, 0);
             }
+            
             d_make();
+            
             if (consume_item)
-            {
                 script_execute(scr_litemshift, arg0, 0);
-            }
+            
             break;
+        
         case 11:
             scr_speaker("no_name");
             msgsetloc(0, "* It doesn't seem very useful./%", "scr_litemuseb_slash_scr_litemuseb_gml_179_0_b");
-            if (room == 16 && global.plot < 105)
+            
+            if (room == room_torhouse && global.plot < 105)
             {
                 if (scr_flag_get(1376) == 0)
                 {
@@ -171,6 +187,7 @@
                 {
                     var fes_rooms = [18, 20, 21, 22, 23, 24, 25, 27, 28];
                     var is_fes_room = false;
+                    
                     for (var i = 0; i < array_length(fes_rooms); i++)
                     {
                         if (room == fes_rooms[i])
@@ -179,6 +196,7 @@
                             break;
                         }
                     }
+                    
                     if (is_fes_room)
                     {
                         scr_flag_set(1377, 1);
@@ -189,54 +207,63 @@
                     }
                 }
             }
+            
             scr_writetext(0, "x", 0, 0);
             break;
+        
         case 12:
             global.msg[0] = stringsetloc("* You equipped the Eraser./%", "scr_litemuseb_slash_scr_litemuseb_gml_221_0");
             scr_lweaponeq(arg0, arg1);
-            snd_play(442);
+            snd_play(snd_item);
             scr_writetext(0, "x", 0, 0);
             break;
+        
         case 13:
             global.msg[0] = stringsetloc("* You equipped the Mech. Pencil./%", "scr_litemuseb_slash_scr_litemuseb_gml_228_0");
             scr_lweaponeq(arg0, arg1);
-            snd_play(442);
+            snd_play(snd_item);
             scr_writetext(0, "x", 0, 0);
             break;
+        
         case 15:
             global.msg[0] = stringsetloc("* You equipped the Holiday Pencil./%", "scr_litemuseb_slash_scr_litemuseb_gml_235_0");
             scr_lweaponeq(arg0, arg1);
-            snd_play(442);
+            snd_play(snd_item);
             scr_writetext(0, "x", 0, 0);
             break;
+        
         case 16:
             global.msg[0] = stringsetloc("* You equipped the CactusNeedle./%", "scr_litemuseb_slash_scr_litemuseb_gml_242_0");
             scr_lweaponeq(arg0, arg1);
-            snd_play(442);
+            snd_play(snd_item);
             scr_writetext(0, "x", 0, 0);
             break;
+        
         case 17:
             global.msg[0] = stringsetloc("* You equipped the BlackShard./%", "scr_litemuseb_slash_scr_litemuseb_gml_249_0");
             scr_lweaponeq(arg0, arg1);
-            snd_play(442);
+            snd_play(snd_item);
             scr_writetext(0, "x", 0, 0);
             break;
+        
         case 18:
             global.msg[0] = stringsetloc("* You equipped the QuillPen./%", "scr_litemuseb_slash_scr_litemuseb_gml_269_0");
             scr_lweaponeq(arg0, arg1);
-            snd_play(442);
+            snd_play(snd_item);
             scr_writetext(0, "x", 0, 0);
             break;
+        
         case 19:
             var toast_text = stringsetloc("* (You held it up in the air.)/", "scr_litemuseb_slash_scr_litemuseb_gml_276_0");
-            if (room == 16)
+            
+            if (room == room_torhouse)
             {
                 scr_speaker("no_name");
                 msgset(0, toast_text);
                 scr_anyface_next("toriel", "5");
                 msgnextloc("\\E5* Kris^1, you are making crumbs./%", "scr_litemuseb_slash_scr_litemuseb_gml_283_0");
             }
-            else if (room == 20 && global.flag[1324] == 0 && obj_mainchara.x >= 680 && global.facing == 1)
+            else if (room == room_town_north && global.flag[1324] == 0 && obj_mainchara.x >= 680 && global.facing == 1)
             {
                 scr_speaker("no_name");
                 msgset(0, toast_text);
@@ -262,8 +289,10 @@
                 scr_speaker("no_name");
                 msgset(0, toast_text + "%");
             }
+            
             scr_writetext(0, "x", 0, 0);
             break;
+        
         case 20:
             if (scr_havechar("susie"))
             {
@@ -276,31 +305,37 @@
                 scr_speaker("no_name");
                 msgsetloc(0, "* (Bread.)/%", "scr_litemuseb_slash_scr_litemuseb_gml_324_0");
             }
+            
             d_make();
             break;
+        
         case 21:
             scr_speaker("no_name");
             msgsetloc(0, "* (You cannot use it right now.)/%", "scr_litemuseb_slash_scr_litemuseb_gml_332_0");
             d_make();
             break;
+        
         case 22:
             global.msg[0] = stringsetloc("* You equipped the Pencil2./%", "scr_litemuseb_slash_scr_litemuseb_gml_338_0");
             scr_lweaponeq(arg0, arg1);
-            snd_play(442);
+            snd_play(snd_item);
             scr_writetext(0, "x", 0, 0);
             break;
+        
         case 23:
             global.msg[0] = stringsetloc("* You equipped the Petal./%", "scr_litemuseb_slash_scr_litemuseb_gml_345_0");
             scr_lweaponeq(arg0, arg1);
-            snd_play(442);
+            snd_play(snd_item);
             scr_writetext(0, "x", 0, 0);
             break;
+        
         case 201:
             tempsaid = 0;
-            snd_play_x(302, 0.7, 1);
+            snd_play_x(snd_phone, 0.7, 1);
             global.msg[0] = stringsetloc("* Ring.../", "scr_litemuseb_slash_scr_litemuseb_gml_116_0");
             global.msg[1] = stringsetloc("* No one picked up./%", "scr_litemuseb_slash_scr_litemuseb_gml_117_0");
-            if (room == 13 || room == 14 || room == 17)
+            
+            if (room == room_krisroom || room == room_krishallway || room == room_torbathroom)
             {
                 if (global.plot >= 10)
                 {
@@ -314,40 +349,46 @@
                     global.msg[6] = stringsetloc("* Click.../%", "scr_litemuseb_slash_scr_litemuseb_gml_130_0");
                 }
             }
-            if (room == 16)
+            
+            if (room == room_torhouse)
             {
                 tempsaid = 1;
                 global.msg[0] = stringsetloc("* Ring.../", "scr_litemuseb_slash_scr_litemuseb_gml_136_0");
                 global.msg[1] = stringsetloc("* (The phone is ringing^1, but you can't get it.)/", "scr_litemuseb_slash_scr_litemuseb_gml_137_0");
                 global.msg[2] = stringsetloc("* (You're already on the phone^1, after all...)/%", "scr_litemuseb_slash_scr_litemuseb_gml_138_0");
             }
+            
             scr_writetext(0, "x", 0, 0);
             break;
+        
         case 202:
             global.msc = 375;
             scr_text(global.msc);
             global.typer = 5;
             global.fc = 0;
-            instance_create(0, 0, 400);
+            instance_create(0, 0, obj_dialoguer);
             break;
+        
         case 203:
             tempsaid = 0;
-            snd_play_x(302, 0.7, 1);
+            snd_play_x(snd_phone, 0.7, 1);
             global.msg[0] = "* Dialing.../";
             global.msg[1] = "* .../";
             global.msg[2] = "* But nobody came./%";
             scr_writetext(0, "x", 0, 0);
             break;
+        
         case 204:
-            snd_play_x(302, 0.7, 1);
+            snd_play_x(snd_phone, 0.7, 1);
             scr_speaker("no name");
-            if (room != 259)
+            
+            if (room != room_truelab_redlever)
             {
                 msgset(0, "* Dialing...");
                 global.fc = 0;
                 global.fe = 0;
-                instance_create(0, 0, 400);
-                instance_create(0, 0, 1557);
+                instance_create(0, 0, obj_dialoguer);
+                instance_create(0, 0, obj_darkphone_event);
                 global.interact = 1;
             }
             else if (!global.mysteryflag[0])
@@ -365,13 +406,6 @@
                 msgnext(unused_6 + "/");
                 msgnext(unused_7 + "/");
                 msgnext(unused_8 + "/");
-                msgnext(unused_9 + "/");
-                msgnext(unused_10 + "/");
-                msgnext(unused_11 + "/");
-                msgnext(unused_12 + "/");
-                msgnext(unused_13 + "/");
-                msgnext(unused_14 + "/");
-                msgnext(unused_15 + "/");
                 scr_anyface_next("no_name", 0);
                 msgnext("* (Click...)/%");
                 global.mysteryflag[0] = 1;
@@ -384,6 +418,7 @@
                 msgnext("* No one picked up./%");
                 scr_writetext(0, "x", 0, 0);
             }
+            
             break;
     }
 }

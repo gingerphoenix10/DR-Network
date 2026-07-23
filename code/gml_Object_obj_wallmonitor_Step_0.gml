@@ -1,13 +1,14 @@
 ﻿scr_depth();
+
 if (active > 0)
 {
-    if (instance_exists(1198) && lit == 0)
+    if (instance_exists(obj_mainchara) && lit == 0)
     {
-        if (distance_to_object(1198) < 50)
+        if (distance_to_object(obj_mainchara) < 50)
         {
             lit = 1;
-            snd_play(535);
-            sprite_index = 8578;
+            snd_play(snd_menumove);
+            sprite_index = spr_monitor_lit;
         }
     }
 }

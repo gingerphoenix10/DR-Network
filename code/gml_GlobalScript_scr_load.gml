@@ -329,11 +329,11 @@ function scr_load()
     __loadedroom = scr_get_room_by_id(global.currentroom);
     if (scr_dogcheck())
     {
-        __loadedroom = 98;
+        __loadedroom = PLACE_DOGCHECK_CH5;
     }
     if (ONLINE_DEBUG())
     {
-        __loadedroom = 226;
+        __loadedroom = room_dw_fcastle_flowery;
     }
     scr_tempsave();
     if (global.is_console)
@@ -348,7 +348,7 @@ function scr_load()
         }
         else
         {
-            snd_play(406);
+            snd_play(snd_error);
             scr_debug_print("LOAD FAILED: ROOM [" + string(__loadedroom) + "] DOESN'T EXIST");
         }
     }

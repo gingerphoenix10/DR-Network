@@ -7,3 +7,4 @@ if (touched == 0)
     alarm[2] = 8;
     touched = 1;
 }
+// fix this

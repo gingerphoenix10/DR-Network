@@ -12,7 +12,7 @@ boost_wind = function(arg0)
     boost_timer = arg0;
     timer = 0;
     strength = 2;
-    gml_Script_scr_vfx_windboost(winddirection);
+    scr_vfx_windboost(winddirection);
 };
 
 flip_wind = function(arg0, arg1, arg2 = 0, arg3 = false)
@@ -22,7 +22,7 @@ flip_wind = function(arg0, arg1, arg2 = 0, arg3 = false)
     
     flip_timer = arg0;
     change_wind_direction(arg1, arg2, arg3);
-    gml_Script_scr_vfx_windboost(winddirection);
+    scr_vfx_windboost(winddirection);
 };
 
 update_wind_strength = function()

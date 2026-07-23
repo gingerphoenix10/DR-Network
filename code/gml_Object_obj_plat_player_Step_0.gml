@@ -58,7 +58,7 @@ else if (!button3_h())
 shake--;
 
 if (dogjoke == 2)
-    gml_Script_scr_afterimage_monochrome(255, true).image_alpha = 0.5;
+    scr_afterimage_monochrome(255, true).image_alpha = 0.5;
 
 if (cutscene == 1)
 {
@@ -127,7 +127,7 @@ if (hurt || fallen_in_pit || global.interact > 0 || door_direction != 0 || pause
 }
 else
 {
-    gml_Script_scr_get_inputs(true);
+    scr_get_inputs(true);
 }
 
 if (door_direction != 0)
@@ -242,12 +242,12 @@ if (dash_transition_con > 0 && !targetmode)
             visible = 1;
             jumping = 0;
             wallcollision = true;
-            gml_Script_scr_plat_snap_to_ground();
+            scr_plat_snap_to_ground();
             
             with (obj_plat_follower)
             {
                 wallcollision = true;
-                gml_Script_scr_plat_snap_to_ground();
+                scr_plat_snap_to_ground();
                 image_xscale = other.image_xscale;
                 visible = 1;
                 init_caterpillarmode();
@@ -438,7 +438,7 @@ if (in_targetmode)
     }
     
     if (!keep_act_open_forced)
-        gml_Script_scr_get_inputs(true);
+        scr_get_inputs(true);
     
     var type = 0;
     
@@ -609,7 +609,7 @@ if (!in_targetmode && last_targetmode)
     hlit_name = "";
     hlit_desc = "";
     hlit_blocked = false;
-    gml_Script_scr_get_inputs(true);
+    scr_get_inputs(true);
     
     if (encumbered_count > 5)
         press_jump = false;
@@ -623,18 +623,18 @@ if (!in_targetmode && last_targetmode)
         attackbuffer = 4;
     }
     
-    gml_Script_scr_plat_depthcast();
+    scr_plat_depthcast();
     
     with (obj_plat_follower)
     {
-        gml_Script_scr_plat_depthcast();
+        scr_plat_depthcast();
         highlighted = false;
     }
     
     with (heart)
     {
         scr_delay_var("immune", false, 4);
-        gml_Script_scr_plat_set_group(UnknownEnum.Value_m2);
+        scr_plat_set_group(UnknownEnum.Value_m2);
     }
     
     var ti = -1;
@@ -728,7 +728,7 @@ if (targetmode)
                     x = xs + lengthdir_x(i, dir);
                     y = ys + lengthdir_y(i, dir);
                     
-                    with (gml_Script_scr_afterimage_monochrome(255, true))
+                    with (scr_afterimage_monochrome(255, true))
                     {
                         fade_when_paused = true;
                         image_alpha = lerp(0.8, 0, 1 - ((i / dist) * 0.5));
@@ -855,7 +855,7 @@ if (!hurt)
         
         if (afterimagetimer == 0 && !targetmode && visible)
         {
-            var afterimage = gml_Script_scr_afterimage_monochrome(14522675, true);
+            var afterimage = scr_afterimage_monochrome(14522675, true);
             
             with (afterimage)
             {
@@ -983,7 +983,7 @@ else if (dashing_end > 0 && !hurt)
     
     if (grounded && (t % 2) == 0)
     {
-        with (gml_Script_scr_vfx_above(5966))
+        with (scr_vfx_above(5966))
         {
             depth = other.depth + 2;
             y = other.bbox_bottom;
@@ -1910,7 +1910,7 @@ if (_landingsound && sprite_index == spr_kris_plat_land)
     snd_play_pitch(snd_noise, 1.2);
 
 if (jumphovering && fallen_in_pit == 0)
-    gml_Script_scr_collision_failsafe();
+    scr_collision_failsafe();
 
 if (state == 1)
     reached_target();

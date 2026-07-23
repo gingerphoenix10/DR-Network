@@ -103,7 +103,7 @@ initialize = function()
             lsprite = spr_susie_walk_left_lw_unhappy;
         }
         
-        if (gml_Script_scr_use_unhappy_sprites())
+        if (scr_use_unhappy_sprites())
         {
             rsprite = spr_susie_walk_right_dw_unhappy;
             dsprite = spr_susie_walk_down_dw_unhappy;
@@ -172,7 +172,7 @@ initialize = function()
                 lsprite = spr_ralsei_walk_left;
                 usprite = spr_ralsei_walk_up;
                 
-                if (gml_Script_scr_use_unhappy_sprites())
+                if (scr_use_unhappy_sprites())
                 {
                     rsprite = spr_ralsei_walk_right_unhappy;
                     dsprite = spr_ralsei_walk_down_unhappy;

@@ -1,14 +1,17 @@
 ﻿collidetimer -= 1;
+
 if (((collidetimer < 0 && sliding == 1) || instant_end_sliding) && global.interact == 1)
 {
     sliding = 0;
     global.interact = 0;
-    with (1198)
+    
+    with (obj_mainchara)
     {
         sliding = 0;
         fun = 0;
         sprite_index = slidesprite;
     }
+    
     snd_stop(slide_noise);
     instant_end_sliding = 0;
 }

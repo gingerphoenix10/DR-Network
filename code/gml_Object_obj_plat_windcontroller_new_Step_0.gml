@@ -1,7 +1,7 @@
 if (con < 0)
     exit;
 
-if (gml_Script_scr_battlebg_fullalpha())
+if (scr_battlebg_fullalpha())
     exit;
 
 if (instance_number(obj_plat_windcontroller_new) > 1)

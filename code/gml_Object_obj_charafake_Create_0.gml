@@ -6,60 +6,69 @@
         default:
             sety = 10;
             cutscenewait = 704;
+            
             if (!global.darkzone)
-            {
                 cutscenewait = 708;
-            }
+            
             battlestance = 2185;
             break;
+        
         case "frisk":
             sety = 2;
             cutscenewait = 8548;
             battlestance = 8534;
             break;
+        
         case "chara":
             sety = 2;
             cutscenewait = 8535;
             battlestance = 8535;
             break;
+        
         case "susie":
             sety = 22;
             cutscenewait = 7;
+            
             if (!global.darkzone)
-            {
                 cutscenewait = 670;
-            }
+            
             battlestance = 2228;
             break;
+        
         case "ralsei":
             sety = 16;
             cutscenewait = 475;
             battlestance = 2431;
             break;
+        
         case "noelle":
             sety = 28;
             cutscenewait = 401;
+            
             if (!global.darkzone)
-            {
                 cutscenewait = 440;
-            }
+            
             battlestance = 2491;
             break;
+        
         case "aqua":
             sety = 2;
             cutscenewait = 4383;
             battlestance = 6787;
             break;
+        
         case "seth":
             sety = 2;
             cutscenewait = 4241;
             battlestance = 90;
             break;
+        
         case "yellow":
             sety = 45;
             cutscenewait = 3555;
             battlestance = 7624;
             break;
+        
         case "pink":
             sety = 28;
             cutscenewait = 6069;
@@ -97,38 +106,39 @@ performs_culling_checks = false;
 switchingPVP = false;
 eliminated = false;
 event_inherited();
-if (object_index == 1771)
+
+if (object_index == obj_plat_pvp_charafake)
 {
     iframes = 0;
     
     get_hurt = function(arg0)
     {
         if (paused || custom_paused || iframes > 0 || eliminated)
-        {
             exit;
-        }
+        
         with (arg0)
         {
             if (!hit_check(other.id))
-            {
                 exit;
-            }
         }
+        
         global.lastHitId = idthing;
         global.lastHitNum++;
+        
         with (arg0)
-        {
             do_hbx_hit(-4, -1, 1.5 - ((0.5 * other.hp) / other.__max_hp));
-        }
+        
         flash_hurt(255);
-        with (instance_create_depth(x, y, depth, 1658))
+        
+        with (instance_create_depth(x, y, depth, obj_plat_vfx))
         {
-            sprite_index = 3352;
+            sprite_index = spr_hit_vfx;
             image_speed = 1;
         }
-        with (instance_create_depth(x, y, depth, 1658))
+        
+        with (instance_create_depth(x, y, depth, obj_plat_vfx))
         {
-            sprite_index = 1236;
+            sprite_index = spr_smokepuff;
             image_speed = 2;
         }
     };

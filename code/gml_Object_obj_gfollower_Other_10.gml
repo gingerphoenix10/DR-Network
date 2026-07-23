@@ -1,10 +1,10 @@
 ﻿var meminteract = global.interact;
 global.msc = 0;
 global.typer = 5;
+
 if (global.darkzone == 1)
-{
     global.typer = 6;
-}
+
 myinteract = 3;
 global.fc = 0;
 global.fe = 0;
@@ -12,6 +12,7 @@ global.interact = 1;
 image_speed = 0.2;
 global.msgno = 0;
 scr_speaker("no_name");
+
 switch (gfollowertype)
 {
     case 0:
@@ -28,7 +29,9 @@ switch (gfollowertype)
             msgbetter("* They say, something caused it./");
             msgbetter("* Someone./%");
         }
+        
         break;
+    
     case 1:
         if (!isg)
         {
@@ -46,7 +49,9 @@ switch (gfollowertype)
             msgbetter("* Although why am I telling you this? You know what happened much better than me./");
             msgbetter("* After all, you was there beside him, wasn't you?/%");
         }
+        
         break;
+    
     case 2:
         if (!isg)
         {
@@ -62,7 +67,9 @@ switch (gfollowertype)
             msgbetter("* A piece of him anyway./");
             msgbetter("* Ready to relive what you caused?/%");
         }
+        
         break;
+    
     case 3:
         if (!isg)
         {
@@ -80,16 +87,20 @@ switch (gfollowertype)
             msgbetter("* Was that a monster?/");
             msgbetter("* Human?/%");
         }
+        
         break;
 }
+
 if (!skip)
 {
     remanimspeed = image_speed;
-    mydialoguer = instance_create(0, 0, 400);
+    mydialoguer = instance_create(0, 0, obj_dialoguer);
 }
+
 if (skip == 1)
 {
     global.interact = 0;
     skip = 0;
 }
+
 talked += 1;

@@ -220,7 +220,7 @@ update_camera = function()
                 }
             }
             
-            if (array_get(gml_Script_scr_platswap_yscale(), 0) != 1 || !lerpinit)
+            if (array_get(scr_platswap_yscale(), 0) != 1 || !lerpinit)
             {
                 last_ideal_y_real = target.y;
                 lerpinit = true;
@@ -398,7 +398,7 @@ update_camera = function()
                     var owclamp_r = room_width - 320;
                     var owclamp_t = 240;
                     var owclamp_b = room_height - 240;
-                    var ys = array_get(gml_Script_scr_platswap_yscale(), 0);
+                    var ys = array_get(scr_platswap_yscale(), 0);
                     
                     if (ys < 1)
                     {

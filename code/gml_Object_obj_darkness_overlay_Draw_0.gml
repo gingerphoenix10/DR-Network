@@ -1,67 +1,57 @@
 ﻿if (scr_debug())
 {
-    if (sunkus_kb_check_pressed(86))
-    {
+    if (sunkus_kb_check_pressed(ord("V")))
         faded = !faded;
-    }
-    if (sunkus_kb_check_pressed(66))
-    {
+    
+    if (sunkus_kb_check_pressed(ord("B")))
         active = !active;
-    }
 }
+
 var drawoutline = draw_silhouettes;
 var drawripples = false;
+
 if (instance_exists(obj_dw_church_intro_gerson))
-{
     drawoutline = false;
-}
+
 if (instance_exists(obj_dw_church_darkclimb))
-{
     drawoutline = false;
-}
+
 if (instance_exists(obj_dw_churchc_darkswords))
-{
     drawoutline = false;
-}
+
 if (instance_exists(obj_dw_churchc_dodge))
-{
     drawoutline = false;
-}
+
 if (instance_exists(obj_dw_churchc_ripplesneak_poc))
-{
     drawoutline = false;
-}
+
 if (instance_exists(obj_dw_churchc_ripplesneak_poc))
-{
     drawripples = true;
-}
+
 if (i_ex(obj_overworld_darkness_bulletarea))
-{
     obj_overworld_darkness_bulletarea.active = active;
-}
+
 if (!active)
-{
     exit;
-}
+
 if (image_alpha == 0)
-{
     exit;
-}
+
 if (!surface_exists(darkness_surf))
-{
     darkness_surf = surface_create(640, 480);
-}
+
 if (!surface_exists(dim_surf))
-{
     dim_surf = surface_create(640, 480);
-}
+
 surface_set_target(dim_surf);
-draw_set_blend_mode(0);
-draw_clear(0);
+draw_set_blend_mode(bm_normal);
+draw_clear(c_black);
+
 if (drawripples)
 {
     var map_id = scr_layer_tilemap_get_id_fixed("TILES_BATTLEBORDER");
     draw_tilemap(map_id, -camerax(), -cameray());
+    
     with (obj_church_ripple)
     {
         if (!dodraw)
@@ -73,6 +63,7 @@ if (drawripples)
             y += cameray();
         }
     }
+    
     with (obj_dw_church_waterfallchaser_churchc)
     {
         x -= camerax();
@@ -82,13 +73,14 @@ if (drawripples)
         y += cameray();
     }
 }
+
 with (obj_lightsource_behind)
-{
     event_user(6);
-}
+
 var _arrayCount = 0;
 var _char_array;
-with (1198)
+
+with (obj_mainchara)
 {
     if (visible)
     {
@@ -96,9 +88,10 @@ with (1198)
         _arrayCount++;
     }
 }
+
 if (drawoutline)
 {
-    with (1559)
+    with (obj_actor)
     {
         if (visible)
         {
@@ -106,6 +99,7 @@ if (drawoutline)
             _arrayCount++;
         }
     }
+    
     with (obj_dw_church_turtles)
     {
         if (i_ex(gerson))
@@ -114,6 +108,7 @@ if (drawoutline)
             _arrayCount++;
         }
     }
+    
     with (obj_dw_church_intro_gerson)
     {
         if (i_ex(gerson))
@@ -125,11 +120,13 @@ if (drawoutline)
             }
         }
     }
+    
     var krcol = 15245824;
     var sucol = 13138410;
     var racol = 1959605;
     var gercol = 2533989;
     var nocol = 12320748;
+    
     with (obj_dw_church_bookshelfpuzzle)
     {
         if (i_ex(ranpc))
@@ -141,6 +138,7 @@ if (drawoutline)
                 _arrayCount++;
             }
         }
+        
         if (i_ex(sunpc))
         {
             with (sunpc.marker)
@@ -151,6 +149,7 @@ if (drawoutline)
             }
         }
     }
+    
     with (obj_dw_church_pianopiece_right)
     {
         if (i_ex(ranpc))
@@ -162,6 +161,7 @@ if (drawoutline)
                 _arrayCount++;
             }
         }
+        
         if (i_ex(sunpc))
         {
             with (sunpc.marker)
@@ -172,7 +172,8 @@ if (drawoutline)
             }
         }
     }
-    with (1389)
+    
+    with (obj_caterpillarchara)
     {
         if (visible)
         {
@@ -180,7 +181,8 @@ if (drawoutline)
             _arrayCount++;
         }
     }
-    with (1219)
+    
+    with (obj_npc_room)
     {
         if (visible)
         {
@@ -188,7 +190,8 @@ if (drawoutline)
             _arrayCount++;
         }
     }
-    with (1227)
+    
+    with (obj_npc_room_animated)
     {
         if (visible)
         {
@@ -196,6 +199,7 @@ if (drawoutline)
             _arrayCount++;
         }
     }
+    
     with (obj_dw_church_darkmaze)
     {
         if (i_ex(gerson))
@@ -206,6 +210,7 @@ if (drawoutline)
                 _arrayCount++;
             }
         }
+        
         if (i_ex(germark))
         {
             if (germark.visible)
@@ -214,6 +219,7 @@ if (drawoutline)
                 _arrayCount++;
             }
         }
+        
         if (i_ex(sumark))
         {
             if (sumark.visible)
@@ -222,6 +228,7 @@ if (drawoutline)
                 _arrayCount++;
             }
         }
+        
         if (i_ex(ramark))
         {
             if (ramark.visible)
@@ -232,22 +239,26 @@ if (drawoutline)
         }
     }
 }
+
 with (obj_darkness_unlit_object_interactable)
 {
     _char_array[_arrayCount] = self;
     _arrayCount++;
 }
+
 with (obj_character_church_window_silhouette)
 {
     _char_array[_arrayCount] = self;
     _arrayCount++;
 }
+
 with (obj_darkness_unlit_object)
 {
     _char_array[_arrayCount] = self;
     _arrayCount++;
 }
-with (1115)
+
+with (obj_marker_darkness_unlit)
 {
     if (sprite_exists(sprite_index))
     {
@@ -255,22 +266,23 @@ with (1115)
         _arrayCount++;
     }
 }
+
 with (obj_darkness_bullet)
 {
     _char_array[_arrayCount] = self;
     _arrayCount++;
 }
+
 if (_arrayCount > 1)
-{
     _char_array = scr_sort_by_depth(_char_array, false);
-}
+
 if (castShadow)
 {
     for (var i = 0; i < _arrayCount; i++)
     {
         with (_char_array[i])
         {
-            if (object_index == obj_character_church_window_silhouette || object_index == obj_darkness_unlit_object || object_index == obj_darkness_illusion || object_index == obj_darkness_bullet || object_index == 1115)
+            if (object_index == obj_character_church_window_silhouette || object_index == obj_darkness_unlit_object || object_index == obj_darkness_illusion || object_index == obj_darkness_bullet || object_index == obj_marker_darkness_unlit)
             {
                 continue;
             }
@@ -278,7 +290,8 @@ if (castShadow)
             {
                 var _forceOff = false;
                 var _yoff = 4;
-                if (object_index == 1389)
+                
+                if (object_index == obj_caterpillarchara)
                 {
                     if (shadow_force_off)
                     {
@@ -291,62 +304,62 @@ if (castShadow)
                     else if (name == "ralsei")
                     {
                         if (facing[target] == 0)
-                        {
                             _yoff = 8;
-                        }
                         else if (facing[target] == 2)
-                        {
                             _yoff = 12;
-                        }
                     }
                 }
+                
                 if (!_forceOff)
-                {
-                    draw_sprite_ext(sprite_index, image_index, screenx(), (screeny() + ((sprite_height - sprite_yoffset) * 2)) - _yoff, image_xscale, -image_yscale, image_angle, 0, image_alpha);
-                }
+                    draw_sprite_ext(sprite_index, image_index, screenx(), (screeny() + ((sprite_height - sprite_yoffset) * 2)) - _yoff, image_xscale, -image_yscale, image_angle, c_black, image_alpha);
             }
         }
     }
 }
+
 var _battlemode = false;
-with (1535)
+
+with (obj_growtangle)
 {
-    with (1198)
+    with (obj_mainchara)
     {
         if (battlemode)
-        {
             _battlemode = true;
-        }
     }
 }
-if (instance_exists(1535))
+
+if (instance_exists(obj_growtangle))
 {
     with (obj_ghosthouse_lock)
     {
-        _blend = merge_color(image_blend, 0, other.fade_in);
+        _blend = merge_color(image_blend, c_black, other.fade_in);
         draw_sprite_ext(sprite_index, 0, x - camerax(), y - cameray(), image_xscale, image_yscale, image_angle, _blend, image_alpha);
     }
+    
     with (obj_lightsource_lamp)
     {
-        _blend = merge_color(image_blend, 0, other.fade_in);
+        _blend = merge_color(image_blend, c_black, other.fade_in);
         draw_sprite_ext(sprite_index, 0, x - camerax(), y - cameray(), image_xscale, image_yscale, image_angle, _blend, image_alpha);
     }
-    with (1413)
+    
+    with (obj_battlesolid)
     {
         if (sprite_index == spr_ghost_house_the_chimney || other.draw_all_solids)
         {
-            _blend = merge_color(image_blend, 0, other.fade_in);
+            _blend = merge_color(image_blend, c_black, other.fade_in);
             draw_sprite_ext(sprite_index, 0, x - camerax(), y - cameray(), image_xscale, image_yscale, image_angle, _blend, image_alpha);
         }
     }
-    with (1535)
+    
+    with (obj_growtangle)
     {
         if (growcon != 3 && visible)
         {
-            _blend = merge_color(image_blend, 0, other.fade_in);
+            _blend = merge_color(image_blend, c_black, other.fade_in);
             draw_sprite_ext(sprite_index, 0, x - camerax(), y - cameray(), image_xscale, image_yscale, image_angle, _blend, image_alpha);
         }
     }
+    
     with (obj_ghosthouse_jackolantern_merciful)
     {
         if (scare_con >= 1)
@@ -357,36 +370,37 @@ if (instance_exists(1535))
         }
         else if (funny)
         {
-            _blend = merge_color(image_blend, 0, other.fade_in);
+            _blend = merge_color(image_blend, c_black, other.fade_in);
             draw_sprite_pos(sprite_index, image_index, screenx(sx[0]), screeny(sy[0]), screenx(sx[1]), screeny(sy[1]), screenx(sx[2]), screeny(sy[2]), screenx(sx[3]), screeny(sy[3]), brightness);
         }
         else if (ticks > 0)
         {
-            _blend = merge_color(image_blend, 0, other.fade_in);
+            _blend = merge_color(image_blend, c_black, other.fade_in);
             draw_sprite_ext(sprite_index, image_index, screenx() + shakex, screeny() + shakey, image_xscale, image_yscale, image_angle, _blend, image_alpha);
         }
         else
         {
-            _blend = merge_color(image_blend, 0, other.fade_in);
+            _blend = merge_color(image_blend, c_black, other.fade_in);
             draw_sprite_ext(sprite_index, image_index, screenx(), screeny(), image_xscale, image_yscale, image_angle, _blend, image_alpha);
         }
+        
         if (total_ticks > 0 || screamcon == 2)
         {
-            gpu_set_fog(true, 16777215, 0, 1000);
+            gpu_set_fog(true, c_white, 0, 1000);
+            
             if (funny)
-            {
                 draw_sprite_pos(sprite_index, image_index, screenx(sx[0]), screeny(sy[0]), screenx(sx[1]), screeny(sy[1]), screenx(sx[2]), screeny(sy[2]), screenx(sx[3]), screeny(sy[3]), brightness);
-            }
             else
-            {
                 draw_sprite_ext(sprite_index, image_index, screenx() + shakex, screeny() + shakey, image_xscale, image_yscale, image_angle, image_blend, brightness);
-            }
         }
-        gpu_set_fog(false, 16777215, 0, 1000);
+        
+        gpu_set_fog(false, c_white, 0, 1000);
     }
-    var _blend = merge_color(image_blend, 0, fade_in);
+    
+    var _blend = merge_color(image_blend, c_black, fade_in);
     draw_sprite_ext(sprite_index, 0, x - camerax(), y - cameray(), image_xscale, image_yscale, image_angle, _blend, image_alpha);
 }
+
 for (var i = 0; i < _arrayCount; i++)
 {
     with (_char_array[i])
@@ -397,7 +411,7 @@ for (var i = 0; i < _arrayCount; i++)
         }
         else
         {
-            if (object_index == obj_darkness_unlit_object || object_index == obj_darkness_illusion || object_index == 1115)
+            if (object_index == obj_darkness_unlit_object || object_index == obj_darkness_illusion || object_index == obj_marker_darkness_unlit)
             {
                 draw_sprite_ext(sprite_index, image_index, x - camerax(), y - cameray(), image_xscale, image_yscale, image_angle, image_blend, image_alpha);
                 continue;
@@ -407,95 +421,91 @@ for (var i = 0; i < _arrayCount; i++)
                 draw_sprite_ext(dark_sprite, image_index, x - camerax(), y - cameray(), image_xscale, image_yscale, image_angle, image_blend, image_alpha);
                 continue;
             }
+            
             if (!iv_ex(_char_array[i], "outlineColor"))
             {
                 if (other.outline_style == 0)
-                {
                     outlineColor = other.outline_default;
-                }
                 else
-                {
                     outlineColor = scr_get_outline_color(_char_array[i], other.outline_default, other.outline_style);
-                }
             }
-            var _outlineColor = merge_color(0, outlineColor, other.highlightalpha);
+            
+            var _outlineColor = merge_color(c_black, outlineColor, other.highlightalpha);
+            
             if (i_ex(id) && image_alpha < 1 && visible)
             {
             }
+            
             if (_battlemode && obj_battlealphaer.battlealpha > 0)
-            {
-                _outlineColor = merge_color(_outlineColor, 0, 1);
-            }
+                _outlineColor = merge_color(_outlineColor, c_black, 1);
+            
             if (drawoutline)
             {
                 d3d_set_fog(true, _outlineColor, 0, 1);
                 draw_sprite_ext(sprite_index, image_index, x - camerax(), y - cameray(), image_xscale, image_yscale, image_angle, image_blend, image_alpha);
-                d3d_set_fog(false, 0, 0, 1);
+                d3d_set_fog(false, c_black, 0, 1);
                 gpu_set_alphatestenable(true);
-                gpu_set_blendmode_ext_sepalpha(5, 6, 7, 1);
-                draw_sprite_ext(sprite_index, image_index, x - camerax(), (y - cameray()) + 2, image_xscale, image_yscale, image_angle, 0, image_alpha);
-                draw_set_blend_mode(0);
+                gpu_set_blendmode_ext_sepalpha(bm_src_alpha, bm_inv_src_alpha, bm_dest_alpha, bm_zero);
+                draw_sprite_ext(sprite_index, image_index, x - camerax(), (y - cameray()) + 2, image_xscale, image_yscale, image_angle, c_black, image_alpha);
+                draw_set_blend_mode(bm_normal);
                 gpu_set_alphatestenable(false);
             }
-            if (object_index == 1198 && _battlemode && battlealpha > 0)
+            
+            if (object_index == obj_mainchara && _battlemode && battlealpha > 0)
             {
                 if (fun == 0)
                 {
                     if (global.facing == 0)
-                    {
                         draw_sprite_ext(spr_krisd_heart_outline, image_index, screenx(), screeny(), image_xscale, image_yscale, 0, image_blend, battlealpha);
-                    }
+                    
                     if (global.facing == 1)
-                    {
                         draw_sprite_ext(spr_krisr_heart_outline, image_index, screenx(), screeny(), image_xscale, image_yscale, 0, image_blend, battlealpha);
-                    }
+                    
                     if (global.facing == 2)
-                    {
                         draw_sprite_ext(spr_krisu_heart_outline, image_index, screenx(), screeny(), image_xscale, image_yscale, 0, image_blend, battlealpha);
-                    }
+                    
                     if (global.facing == 3)
-                    {
                         draw_sprite_ext(spr_krisl_heart_outline, image_index, screenx(), screeny(), image_xscale, image_yscale, 0, image_blend, battlealpha);
-                    }
                 }
-                else if (sprite_index == 7321)
+                else if (sprite_index == spr_krisd_slide)
                 {
                     draw_sprite_ext(spr_krisd_slide_heart_outline, image_index, x, y, image_xscale, image_yscale, 0, image_blend, battlealpha);
                 }
-                draw_sprite_ext(4654, 0, screenx() + 12, screeny() + 40, 1, 1, 0, 16777215, battlealpha * 2);
+                
+                draw_sprite_ext(spr_heart_outline2, 0, screenx() + 12, screeny() + 40, 1, 1, 0, c_white, battlealpha * 2);
             }
         }
     }
 }
-draw_set_blend_mode(3);
-with (401)
-{
+
+draw_set_blend_mode(bm_subtract);
+
+with (obj_lightsource)
     event_user(6);
-}
+
 surface_reset_target();
-draw_set_blend_mode(0);
+draw_set_blend_mode(bm_normal);
 surface_set_target(darkness_surf);
-draw_clear_alpha(0, 0);
+draw_clear_alpha(c_black, 0);
 surface_reset_target();
 surface_copy(darkness_surf, 0, 0, dim_surf);
 surface_set_target(darkness_surf);
-draw_set_blend_mode(3);
-with (401)
-{
+draw_set_blend_mode(bm_subtract);
+
+with (obj_lightsource)
     event_user(7);
-}
+
 surface_reset_target();
-draw_set_blend_mode(0);
-draw_surface_ext(dim_surf, camerax(), cameray(), 1, 1, 0, 16777215, 0.5 * image_alpha);
-draw_surface_ext(darkness_surf, camerax(), cameray(), 1, 1, 0, 16777215, image_alpha);
-with (1238)
+draw_set_blend_mode(bm_normal);
+draw_surface_ext(dim_surf, camerax(), cameray(), 1, 1, 0, c_white, 0.5 * image_alpha);
+draw_surface_ext(darkness_surf, camerax(), cameray(), 1, 1, 0, c_white, image_alpha);
+
+with (obj_marker)
 {
     if (variable_instance_exists(id, "glow"))
     {
         if (glow == true)
-        {
             draw_self();
-        }
     }
     else
     {

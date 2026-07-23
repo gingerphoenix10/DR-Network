@@ -2,9 +2,11 @@
 flip = 0;
 horizon = 114;
 ceiling = 73;
-if (room == 262)
+
+if (room == room_truelab_mirror)
 {
     horizon -= 20;
     ceiling -= 20;
 }
+
 xscalething = 1;

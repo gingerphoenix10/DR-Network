@@ -8,10 +8,10 @@ var partydata =
     sentpartyhostinfo: partyhostinfo
 };
 var sndfntpluse = 151;
-if (instance_exists(1198))
-{
+
+if (instance_exists(obj_mainchara))
     sndfntpluse = obj_mainchara.sndfnt;
-}
+
 var chatdata = 
 {
     socket: networkvarsget(2),
@@ -28,36 +28,40 @@ var pvpdata =
     lastHitId: global.lastHitId,
     eliminated: global.pvpeliminated
 };
+
 if (infotype == 0)
 {
-    buffer_seek(Buffer, 0, 0);
-    buffer_write(Buffer, 1, 0);
-    buffer_write(Buffer, 11, global.onlineversion);
+    buffer_seek(Buffer, buffer_seek_start, 0);
+    buffer_write(Buffer, buffer_u8, 0);
+    buffer_write(Buffer, buffer_string, global.onlineversion);
     Result = network_send_packet(Socket, Buffer, buffer_tell(Buffer));
     infotype = 1;
 }
 else
 {
-    buffer_seek(Buffer, 0, 0);
-    buffer_write(Buffer, 1, 1);
-    buffer_write(Buffer, 11, json_stringify(bufferdata));
-    buffer_write(Buffer, 11, json_stringify(bufferdata2));
-    buffer_write(Buffer, 11, json_stringify(partydata));
-    buffer_write(Buffer, 11, json_stringify(pvpdata));
-    buffer_write(Buffer, 11, json_stringify(chatdata));
+    buffer_seek(Buffer, buffer_seek_start, 0);
+    buffer_write(Buffer, buffer_u8, 1);
+    buffer_write(Buffer, buffer_string, json_stringify(bufferdata));
+    buffer_write(Buffer, buffer_string, json_stringify(bufferdata2));
+    buffer_write(Buffer, buffer_string, json_stringify(partydata));
+    buffer_write(Buffer, buffer_string, json_stringify(pvpdata));
+    buffer_write(Buffer, buffer_string, json_stringify(chatdata));
     Result = network_send_packet(Socket, Buffer, buffer_tell(Buffer));
 }
+
 if (Result < 0)
 {
     scr_notificationsend(2, "");
-    if (instance_exists(1759))
+    
+    if (instance_exists(obj_realonlinemenu))
     {
-        with (1759)
+        with (obj_realonlinemenu)
         {
             buttons[selected] = "Error";
-            snd_play(406);
-            color = 255;
+            snd_play(snd_error);
+            color = c_red;
         }
     }
+    
     instance_destroy();
 }

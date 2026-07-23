@@ -11,7 +11,7 @@ x = round(x - (sprite_offset_x * image_xscale));
 y = round(y - (sprite_offset_y * image_yscale));
 
 if (!targetmode && instance_number(obj_plat_follower) == 0 && !static_dash)
-    gml_Script_scr_afterimage_color(3, 3, 0.09, 8388736);
+    scr_afterimage_color(3, 3, 0.09, 8388736);
 
 var _outline_c = 255;
 var _outline_alpha = outline_alpha;
@@ -183,7 +183,7 @@ var _meter_thickness = 3;
 
 if (jumphovering)
 {
-    gml_Script_draw_circular_bar(x, y, jumphover_meter, jumphover_max, 255, _meter_radius, 1, _meter_thickness);
+    draw_circular_bar(x, y, jumphover_meter, jumphover_max, 255, _meter_radius, 1, _meter_thickness);
 }
 else
 {
@@ -192,12 +192,12 @@ else
     
     if (jumphover_chargevfx > 0)
     {
-        gml_Script_draw_circular_bar(x, y, _max - jumphover_chargevfx, _max, _color, _meter_radius, 1, _meter_thickness);
+        draw_circular_bar(x, y, _max - jumphover_chargevfx, _max, _color, _meter_radius, 1, _meter_thickness);
     }
     else if (jumphover_chargevfx_white > 0)
     {
         _color = 16777215;
-        gml_Script_draw_circular_bar(x, y, _max, _max, _color, _meter_radius, jumphover_chargevfx_white / jumphover_chargevfx_whitemax, _meter_thickness);
+        draw_circular_bar(x, y, _max, _max, _color, _meter_radius, jumphover_chargevfx_white / jumphover_chargevfx_whitemax, _meter_thickness);
         jumphover_chargevfx_white--;
     }
 }
@@ -245,7 +245,7 @@ y = _yy;
 
 if (show_toggles)
 {
-    gml_Script_scr_get_vxy(0);
+    scr_get_vxy(0);
     draw_set_color(c_white);
     draw_set_font(fnt_main);
     draw_set_halign(fa_left);

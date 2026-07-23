@@ -1,7 +1,7 @@
 if (strength <= 0)
     exit;
 
-if (gml_Script_scr_battlebg_fullalpha())
+if (scr_battlebg_fullalpha())
     exit;
 
 var winddir = 1;
