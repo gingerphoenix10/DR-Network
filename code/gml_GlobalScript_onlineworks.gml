@@ -57,7 +57,7 @@ function onlineinit()
     
     if (!file_exists(filename))
     {
-        ini_open(filename);
+        ossafe_ini_open(filename);
         ini_write_string("Multiplayer", "ip", global.ip);
         ini_write_string("Multiplayer", "port", global.port);
         ini_write_string("Multiplayer", "nickname", global.playernickname);
@@ -84,11 +84,11 @@ function onlineinit()
         ini_write_real("Bonus", "lostlevels", global.lostlevels);
         ini_write_real("Bonus", "connecttimeout", global.connecttimeout);
         ini_write_real("Bonus", "debugerrors", global.debugerrors);
-        ini_close();
+        ossafe_ini_close();
     }
     else if (file_exists(filename))
     {
-        ini_open(filename);
+        ossafe_ini_open(filename);
         global.ip = ini_read_string("Multiplayer", "ip", "127.0.0.1");
         global.port = ini_read_string("Multiplayer", "port", "7676");
         global.playernickname = ini_read_string("Multiplayer", "nickname", global.truename);
@@ -110,7 +110,7 @@ function onlineinit()
         global.lostlevels = ini_read_real("Bonus", "lostlevels", 0);
         global.connecttimeout = ini_read_real("Bonus", "connecttimeout", 5000);
         global.debugerrors = ini_read_real("Bonus", "debugerrors", 0);
-        ini_close();
+        ossafe_ini_close();
     }
     
     if (!file_exists(fileip))
@@ -203,7 +203,7 @@ function mysterymanback()
 function onlineinfoupdate()
 {
     var filename = "onlineconfig.ini";
-    ini_open(filename);
+    ossafe_ini_open(filename);
     ini_write_string("Multiplayer", "ip", global.ip);
     ini_write_string("Multiplayer", "port", global.port);
     ini_write_string("Multiplayer", "nickname", global.playernickname);
@@ -230,7 +230,7 @@ function onlineinfoupdate()
     ini_write_real("Bonus", "lostlevels", global.lostlevels);
     ini_write_real("Bonus", "connecttimeout", global.connecttimeout);
     ini_write_real("Bonus", "debugerrors", global.debugerrors);
-    ini_close();
+    ossafe_ini_close();
 }
 
 function chatsendmessage(arg0, arg1 = "", arg2 = 16777215, arg3 = obj_mainchara)

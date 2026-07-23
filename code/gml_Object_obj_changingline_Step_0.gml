@@ -1,4 +1,4 @@
-var respobject = 1579;
+var respobject = obj_onlineconfig;
 
 if (instance_exists(obj_onlineconfig))
 {
@@ -11,7 +11,7 @@ if (instance_exists(obj_onlineconfig))
 }
 else if (instance_exists(obj_realonlinemenu))
 {
-    respobject = 1589;
+    respobject = obj_realonlinemenu;
     
     if (obj_realonlinemenu.menudisappear)
     {
