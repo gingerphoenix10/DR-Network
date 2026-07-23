@@ -2,11 +2,12 @@
 *.exe
 *.win
 *.gamelog.txt
-*.ogg
+/*.ogg
 options.ini
 mod-backup-manifest.json
 audiogroup*.dat
 .modbackup
+/[Bb]uild
 
 # Remove this once ready
-conv_utils/
+/conv_utils/
