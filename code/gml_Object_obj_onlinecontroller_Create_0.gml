@@ -47,3 +47,15 @@ function acceptablemes(arg0)
     
     return acceptable;
 }
+
+if (global.is_realconsole)
+{
+    // When testing the mod on consoles, route any crashes / errors to be sent remotely to a TCP server for debugging
+
+    send_to_debugger("Connected to Console!");
+
+    exception_unhandled_handler(function(ex)
+    {
+        send_to_debugger(string(ex))
+    });
+}

@@ -48,6 +48,8 @@ function onlineinit()
     global.unlockchapter5 = 0;
     global.debugerrors = 0;
     global.alwaysunlockpink = 1;
+    global.debuggerIP = "192.168.1.222";
+    global.debuggerPort = 2845;
     var fileip = "serverlist.json";
     global.serverlist = 
     {
@@ -1455,4 +1457,26 @@ function IsPVP()
 function ONLINE_DEBUG()
 {
     return false;
+}
+
+function send_to_debugger(text)
+{
+    if (!variable_global_exists("debugSocket"))
+        global.debugSocket = network_create_socket(network_socket_tcp);
+
+    if (!variable_global_exists("debuggerIP")) // Will move these to config file later but onlineinit is called later than the first debug message so not rn
+        global.debuggerIP = "192.168.1.222";
+    if (!variable_global_exists("debuggerPort"))
+        global.debuggerPort = 2845;
+
+    if (!variable_global_exists("debugConnection") || global.debugConnection < 0)
+    {
+        network_set_config(network_config_connect_timeout,4000); 
+        global.debugConnection = network_connect_raw(global.debugSocket, global.debuggerIP, global.debuggerPort);
+    }
+
+    var buff = buffer_create(string_byte_length(text) + 1, buffer_grow, 1);
+    buffer_write(buff, buffer_string, text);
+    network_send_raw(global.debugSocket, buff, buffer_tell(buff));
+    buffer_delete(buff);
 }
