@@ -24,8 +24,12 @@ os.chdir(tempPath)
 buildPath = "build"
 
 stdout = subprocess.DEVNULL
-if ("-v" in sys.argv) or ("--verbose" in sys.argv):
-    stdout = None
+buildSpecify = None
+for argument in sys.argv[1:]:
+    if argument == "-v" or argument == "--verbose":
+        stdout = None
+    else:
+        buildSpecify = argument
 
 buildStart = time.time()
 
@@ -51,6 +55,9 @@ if type(data) == list:
 
 # Begin building sources
 for key in data:
+    if buildSpecify != None and buildSpecify in data and key != buildSpecify:
+        continue
+
     print(f"\nAttempting to build {key}")
 
     # JSON validation
