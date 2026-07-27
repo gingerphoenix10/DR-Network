@@ -658,6 +658,12 @@ for (n = 1; n < pos; n += 1)
                 global.typer = 98;
                 scr_texttype();
             }
+
+            if (nextchar2 == "x")
+            {
+                global.typer = 678
+                scr_texttype();
+            }
             
             if (dialoguer == 1)
             {

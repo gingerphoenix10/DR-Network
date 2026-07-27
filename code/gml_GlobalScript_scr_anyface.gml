@@ -169,6 +169,6 @@
     }
     if (_speaker == "mysteryman")
     {
-        msgsetsub(arg1, "\\TX \\F0 \\E~1 \\Tz %", string(_emotion));
+        msgsetsub(arg1, "\\TX \\F0 \\E~1 \\Tx %", string(_emotion));
     }
 }
