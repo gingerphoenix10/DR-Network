@@ -56,11 +56,13 @@ if (drawchar == 1)
             
             spritemx = 0;
             
+            // Values derived from https://github.com/Emmehehe/CustomDifficultyModForDeltarune/blob/5d053f7eeef953076b9a9ac8f38321834e1c7064/src/modmenu.csx#L265
+            // for this mod: https://gamebanana.com/tools/20839
             if (i >= 2)
-                spritemx = -100;
+                spritemx = global.is_console ? -80 : -100;
             
             if (i != 2)
-                draw_sprite_ext(msprite[i], off, xx + 120 + (i * 100) + spritemx, (yy + tp) - 60, 2, 2, 0, c_white, 1);
+                draw_sprite_ext(msprite[i], off, xx + 120 + (i * (global.is_console ? 80 : 100)) + spritemx, (yy + tp) - 60, 2, 2, 0, c_white, 1);
         }
         
         var drawmoney = 1;
