@@ -1,4 +1,4 @@
-﻿var f = global.facing;
+var f = global.facing;
 global.facing = facing;
 var cutscene = false;
 
@@ -121,10 +121,7 @@ else
         else
         {
             reflection_offset = -4;
-            dsprite = spr_krisd_dark;
-            rsprite = spr_krisr_dark;
-            lsprite = spr_krisl_dark;
-            usprite = spr_krisu_dark;
+            scr_characterspr();
         }
         
         if (fun == 0)
