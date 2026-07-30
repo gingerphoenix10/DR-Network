@@ -9,7 +9,7 @@
     "MarginTop": 28,
     "Transparent": false,
     "Smooth": false,
-    "Preload": false,
+    "preload": true,
     "BBoxMode": 0,
     "CollisionKind": "AxisAlignedRect",
     "OriginX": 0,

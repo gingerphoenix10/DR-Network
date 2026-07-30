@@ -4,13 +4,13 @@ import os
 import shutil
 import math
 from ftplib import FTP
-progress = False
+progress = True
 try:
     from tqdm import tqdm
 except ImportError:
     progress = False
 
-Mode = "FTP"
+Mode = "USB_UMS"
 SourceName = "Nintendo Switch v240"
 Chapter = 5
 

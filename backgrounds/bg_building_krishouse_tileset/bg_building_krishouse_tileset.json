@@ -3,7 +3,7 @@
     "DataName": null,
     "Transparent": false,
     "Smooth": false,
-    "Preload": false,
+    "preload": true,
     "Tileset": {
         "VersionNumber": 2,
         "TileWidth": 195,
