@@ -37,7 +37,7 @@ for file in os.listdir(path):
                 new["Tileset"]["TileIDs"].append(tileId)
 
         newfile = old["name"]+".json"
-        dest = os.path.join(sys.argv[2], "tilesets", old["name"])
+        dest = os.path.join(sys.argv[2], "backgrounds", old["name"])
         if os.path.isfile(os.path.join(path, old["name"]+".png")):
             os.makedirs(dest, exist_ok=True)
             with open(os.path.join(dest, newfile), 'w') as w:
