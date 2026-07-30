@@ -994,47 +994,45 @@ function scr_playemote(arg0)
                 
                 if (arg0 == 5)
                 {
-                    sprite_index = spr_aqua_sit_wave;
+                    sprite_index = spr_aqua_sit_smile;
                     emote = sprite_index;
                     emote_speed = 0.25;
                 }
                 
                 if (arg0 == 6)
                 {
+                    sprite_index = spr_aqua_sit_wave;
+                    emote = sprite_index;
+                    emote_speed = 0.25;
+                }
+                
+                if (arg0 == 7)
+                {
                     sprite_index = spr_aqua_clapping;
                     emote = sprite_index;
                     emote_speed = 1/3;
                 }
                 
-                if (arg0 == 7)
+                if (arg0 == 8)
                 {
                     sprite_index = spr_aqua_toothy_grin;
                     emote = sprite_index;
                     emote_speed = 0;
                 }
                 
-                if (arg0 == 8)
+                if (arg0 == 9)
                 {
-                    sprite_index = (lr_facing == 1) ? spr_aqua_grab_hold2 : spr_aqua_grab_hold;
+                    sprite_index = (lr_facing == 1) ? spr_enemy_aqua_idle_r : spr_enemy_aqua_idle;
                     emote = sprite_index;
-                    emote_speed = 0;
+                    emote_speed = 0.25;
                 }
                 
-                if (arg0 == 9)
+                if (arg0 == 0)
                 {
                     sprite_index = spr_aqua_collapsed;
                     emote = sprite_index;
                     emote_speed = 0;
                 }
-                
-                if (arg0 == 0)
-                {
-                    sprite_index = spr_aqua_confused;
-                    emote = sprite_index;
-                    emote_speed = 0;
-                    image_index = 1;
-                }
-                
                 break;
             
             case "pink":
