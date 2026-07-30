@@ -8,6 +8,3 @@ mod-backup-manifest.json
 audiogroup*.dat
 .modbackup
 /[Bb]uild
-
-# Remove this once ready
-/conv_utils/
