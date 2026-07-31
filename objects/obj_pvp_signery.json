@@ -28,8 +28,8 @@
         },
         {
             "Category": "Collision",
-            "Subtype": "980",
-            "CodeEntry": "gml_Object_obj_pvp_signery_Collision_980"
+            "Subtype": "982",
+            "CodeEntry": "gml_Object_obj_pvp_signery_Collision_obj_plat_hbx"
         }
     ]
 }

@@ -39,4 +39,4 @@ function sp_draw_text(arg0, arg1, arg2)
 
 selected = 1;
 mapindex = 0;
-maps = [["Tree", 266], ["another", 0], ["another2", 0]];
+maps = [["Tree", room_plat_pvp_tree], ["another", 0], ["another2", 0]];

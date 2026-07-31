@@ -1,4 +1,4 @@
-if (!variable_global_exists("spectating"))
+if (!variable_global_exists("spectating") || !global.spectating)
     exit;
 
 var spectatingCharacter = instance_find(obj_charafake, global.spectating);

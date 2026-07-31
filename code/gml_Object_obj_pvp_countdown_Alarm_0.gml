@@ -1,4 +1,4 @@
-﻿with (910)
+﻿with (obj_plat_player)
 {
     state = 0;
 }

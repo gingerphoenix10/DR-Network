@@ -2,7 +2,6 @@ if (hide_room)
 {
     draw_set_color(c_black);
     ossafe_fill_rectangle(-10, -10, room_width + 10, room_height + 10);
-    draw_set_color(c_white);
 }
 
 if (!is_init)
@@ -34,5 +33,6 @@ if ((countdown_timer % 30) == 0)
 draw_set_valign(fa_top);
 draw_set_halign(fa_center);
 draw_set_font(fnt_main);
+draw_set_color(c_white)
 draw_text_ext_transformed(camerax() + (view_wport[0] / 2), (cameray() + (view_hport[0] / 2)) - 50, string(countdown_text), 4, 9999, 6, 6, 0);
 draw_set_halign(fa_left);

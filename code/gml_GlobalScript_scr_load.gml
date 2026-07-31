@@ -333,7 +333,7 @@ function scr_load()
     }
     if (ONLINE_DEBUG())
     {
-        __loadedroom = room_dw_fcastle_flowery;
+        __loadedroom = room_plat_pvp_tree;
     }
     scr_tempsave();
     if (global.is_console)

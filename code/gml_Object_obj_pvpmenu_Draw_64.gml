@@ -76,7 +76,7 @@ if (selected == 0)
     {
         snd_play(snd_menumove);
         
-        if (instance_exists(obj_pvpcontroller))
+        if (instance_exists(obj_server))
             global.pvpmap = global.reqmap;
     }
 }
