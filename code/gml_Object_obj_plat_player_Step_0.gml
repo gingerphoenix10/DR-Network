@@ -207,9 +207,9 @@ if (dash_transition_con > 0 && !targetmode)
                 }, 19);
                 
                 if (name == "susie")
-                    force_animation(1185, 19, true);
+                    force_animation(spr_plat_susie_land, 19, true);
                 else
-                    force_animation(6347, 19, true);
+                    force_animation(spr_plat_ralsei_land, 19, true);
                 
                 image_speed = 0;
             }
