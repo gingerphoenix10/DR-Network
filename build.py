@@ -16,7 +16,7 @@ import subprocess
 import time
 
 buildXdelta = True
-buildG3MPatch = False
+buildG3MPatch = True
 
 tempPath = dir_path = os.path.dirname(os.path.realpath(__file__))
 os.chdir(tempPath)
