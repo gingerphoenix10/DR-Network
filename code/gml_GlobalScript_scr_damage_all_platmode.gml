@@ -117,7 +117,7 @@ function scr_damage_all_platmode()
                     
                     if (i_ex(obj_plat_player))
                     {
-                        trg = 910;
+                        trg = obj_plat_player;
                         
                         if (ti > 0)
                         {
@@ -130,7 +130,7 @@ function scr_damage_all_platmode()
                                     trg = self;
                             }
                             
-                            if (trg == 910)
+                            if (trg == obj_plat_player)
                             {
                                 if (hpdiff == maxhpdiff)
                                 {
@@ -144,7 +144,7 @@ function scr_damage_all_platmode()
                     }
                     else if (i_ex(obj_climb_kris))
                     {
-                        trg = 1164;
+                        trg = obj_climb_kris;
                         
                         if (ti > 0)
                         {
@@ -157,7 +157,7 @@ function scr_damage_all_platmode()
                                     trg = self;
                             }
                             
-                            if (trg == 1164)
+                            if (trg == obj_climb_kris)
                             {
                                 if (hpdiff == maxhpdiff)
                                 {
