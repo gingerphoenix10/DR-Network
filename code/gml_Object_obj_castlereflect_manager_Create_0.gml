@@ -61,7 +61,7 @@ sort_reflectable_objects = function(arg0)
     }
 };
 
-reflectable_objects = [1198, 1660, 1389, 775, 1559, 512, 171, 373, 954, 1611, 1058, 309, 152, 1735];
+reflectable_objects = [obj_mainchara, obj_mainchara_dash, obj_caterpillarchara, obj_caterpillar_dash, obj_actor, obj_fusuma_door, obj_platswap_statue, obj_plat_npc, obj_platswap_prop, obj_terracotta_stationary_overworld, obj_plat_fusumawall, obj_slashpusher_anchor, obj_reflection, obj_charafake];
 shadow_falloff = 160;
 depth = 20000;
 u_uvs = shader_get_uniform(shd_castlereflect, "uvs");

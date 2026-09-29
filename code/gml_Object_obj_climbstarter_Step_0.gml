@@ -59,12 +59,12 @@ if (con == 1)
         {
             if (obj_mainchara.climb_with_caterpillars && global.showcompanions)
             {
-                var spr = 83;
+                var spr = spr_susie_dw_jump_ball;
                 var xxx = -40;
                 
                 if (name == "ralsei")
                 {
-                    spr = 484;
+                    spr = spr_ralsei_jump_ball;
                     xxx = 40;
                 }
                 
@@ -146,7 +146,7 @@ if (con == 1)
                 yy += 40;
             
             var su = instance_create(xx, yy, obj_climb_susie);
-            su.caterpillartarget = 1164;
+            su.caterpillartarget = obj_climb_kris;
             su.depth = obj_climb_kris.depth + 1;
             xx = obj_climb_kris.x + 40;
             yy = obj_climb_kris.y;

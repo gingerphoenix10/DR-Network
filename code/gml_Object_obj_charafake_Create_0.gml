@@ -5,74 +5,74 @@
         case "kris":
         default:
             sety = 10;
-            cutscenewait = 704;
+            cutscenewait = spr_kris_pease;
             
             if (!global.darkzone)
-                cutscenewait = 708;
+                cutscenewait = spr_kris_sit_wind;
             
-            battlestance = 2185;
+            battlestance = spr_krisb_intro;
             break;
         
         case "frisk":
             sety = 2;
-            cutscenewait = 8548;
-            battlestance = 8534;
+            cutscenewait = spr_maincharar_liedown;
+            battlestance = spr_mainchara_pourwater;
             break;
         
         case "chara":
             sety = 2;
-            cutscenewait = 8535;
-            battlestance = 8535;
+            cutscenewait = spr_truechara_laugh;
+            battlestance = spr_truechara_laugh;
             break;
         
         case "susie":
             sety = 22;
-            cutscenewait = 7;
+            cutscenewait = spr_susie_head_scratch_dw;
             
             if (!global.darkzone)
-                cutscenewait = 670;
+                cutscenewait = spr_susie_head_scratch;
             
-            battlestance = 2228;
+            battlestance = spr_susieb_idle;
             break;
         
         case "ralsei":
             sety = 16;
-            cutscenewait = 475;
-            battlestance = 2431;
+            cutscenewait = spr_ralsei_dance;
+            battlestance = spr_ralsei_battleintro;
             break;
         
         case "noelle":
             sety = 28;
-            cutscenewait = 401;
+            cutscenewait = spr_noelle_shocked_dw;
             
             if (!global.darkzone)
-                cutscenewait = 440;
+                cutscenewait = spr_noelle_shocked_lw;
             
-            battlestance = 2491;
+            battlestance = spr_noelleb_battleintro;
             break;
         
         case "aqua":
             sety = 2;
-            cutscenewait = 4383;
-            battlestance = 6787;
+            cutscenewait = spr_aqua_shell_listen;
+            battlestance = spr_aqua_sleevewave; //CHANGE
             break;
         
         case "seth":
             sety = 2;
-            cutscenewait = 4241;
-            battlestance = 90;
+            cutscenewait = spr_seth_read;
+            battlestance = spr_seth_exasperated;
             break;
         
         case "yellow":
             sety = 45;
-            cutscenewait = 3555;
-            battlestance = 7624;
+            cutscenewait = spr_yellow_up_dejected_lookback;
+            battlestance = spr_yellow_shoot;
             break;
         
         case "pink":
             sety = 28;
-            cutscenewait = 6069;
-            battlestance = 682;
+            cutscenewait = spr_pink_sing_idle;
+            battlestance = spr_pink_laugh_pouring;
     }
 }
 

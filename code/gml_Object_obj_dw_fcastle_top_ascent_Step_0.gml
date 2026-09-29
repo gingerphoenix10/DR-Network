@@ -75,10 +75,10 @@ if (!init)
 if (global.pause_plat)
     exit;
 
-if (scr_trigcheck_ext("reset", 910))
+if (scr_trigcheck_ext("reset", obj_plat_player))
     reset_all_stage_elements();
 
-if (scr_trigcheck_ext("can_reset", 910))
+if (scr_trigcheck_ext("can_reset", obj_plat_player))
 {
     if (!can_reset)
     {
@@ -91,7 +91,7 @@ if (scr_trigcheck_ext("can_reset", 910))
 
 if (ascent_con == 0)
 {
-    if (scr_trigcheck_ext("bullet1", 910) && obj_plat_player.grounded)
+    if (scr_trigcheck_ext("bullet1", obj_plat_player) && obj_plat_player.grounded)
     {
         ascent_con = 1;
         create_scary_bullet(-1, 7.5);
@@ -100,7 +100,7 @@ if (ascent_con == 0)
 
 if (ascent_con == 1)
 {
-    if (scr_trigcheck_ext("bullet2", 910) && obj_plat_player.grounded)
+    if (scr_trigcheck_ext("bullet2", obj_plat_player) && obj_plat_player.grounded)
     {
         ascent_con = 2;
         create_scary_bullet(1, -9);
@@ -115,13 +115,13 @@ if (failcounter >= 3)
 
 for (var i = current_room_progress; i < 9; i++)
 {
-    if (scr_trigcheck_ext("progress_" + string(i), 910))
+    if (scr_trigcheck_ext("progress_" + string(i), obj_plat_player))
         current_room_progress = max(current_room_progress, i);
 }
 
 if (introcon == 0)
 {
-    if (scr_trigcheck_ext("intro_1", 910))
+    if (scr_trigcheck_ext("intro_1", obj_plat_player))
     {
         introcon = 1;
         scr_speaker("ralsei");
@@ -132,7 +132,7 @@ if (introcon == 0)
 }
 else if (introcon == 1)
 {
-    if (scr_trigcheck_ext("intro_2", 910))
+    if (scr_trigcheck_ext("intro_2", obj_plat_player))
     {
         introcon = 2;
         scr_speaker("susie");
@@ -144,7 +144,7 @@ else if (introcon == 1)
 
 if (shuricon == 0)
 {
-    if (scr_trigcheck_ext("shuri_1", 910) && obj_plat_player.grounded)
+    if (scr_trigcheck_ext("shuri_1", obj_plat_player) && obj_plat_player.grounded)
     {
         shuricon = 1.1;
         scr_delay_var("shuricon", 1, 120);
@@ -158,7 +158,7 @@ if (shuricon == 0)
 }
 else if (shuricon == 1)
 {
-    if (scr_trigcheck_ext("shuri_1", 910) && obj_plat_player.grounded)
+    if (scr_trigcheck_ext("shuri_1", obj_plat_player) && obj_plat_player.grounded)
     {
         shuricon = 1.1;
         scr_delay_var("shuricon", 2, 120);
@@ -172,7 +172,7 @@ else if (shuricon == 1)
 }
 else if (shuricon == 2)
 {
-    if (scr_trigcheck_ext("shuri_1", 910) && obj_plat_player.grounded)
+    if (scr_trigcheck_ext("shuri_1", obj_plat_player) && obj_plat_player.grounded)
     {
         shuricon = 1.1;
         var small_text = stringsetloc("No!?", "obj_dw_fcastle_top_ascent_slash_Step_0_gml_138_0");
@@ -186,7 +186,7 @@ else if (shuricon == 2)
 
 if (wants_to_reveal_wall)
 {
-    if (scr_trigcheck_ext("wall_reveal", 910))
+    if (scr_trigcheck_ext("wall_reveal", obj_plat_player))
     {
         wants_to_reveal_wall = false;
         global.flag[1902] = 1;
@@ -230,7 +230,7 @@ if (waiting_for_free_will_scene == 1)
         }
     }
     
-    if (eligible && scr_trigcheck_ext("intro_2", 910))
+    if (eligible && scr_trigcheck_ext("intro_2", obj_plat_player))
     {
         var wait = false;
         
@@ -413,7 +413,7 @@ if (waiting_for_free_will_scene == 2 && !instance_exists(obj_cutscene_master))
     scr_flag_set_ext(PROGRESS_FLAG, _FREEWILL_BIT, 3, 2);
 }
 
-if (furthest_room_progress < 8.5 && scr_trigcheck_ext("finished", 910))
+if (furthest_room_progress < 8.5 && scr_trigcheck_ext("finished", obj_plat_player))
 {
     with (obj_plat_follower)
         drop_off_platform_mode(true);

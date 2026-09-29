@@ -21,7 +21,7 @@ var reflectables = array_length(reflectable_objects);
 
 for (var n = 0; n < reflectables; n++)
 {
-    if (global.showcompanions || reflectable_objects[n] != 1389)
+    if (global.showcompanions || reflectable_objects[n] != obj_caterpillarchara)
         sort_reflectable_objects(reflectable_objects[n]);
 }
 

@@ -61,7 +61,7 @@ draw_reflection = function()
     }
 };
 
-reflectobjs = [1198, 1389, 1735];
+reflectobjs = [obj_mainchara, obj_caterpillarchara, obj_charafake];
 
 for (var i = 0; i < array_length(reflectobjs); i++)
 {

@@ -43,17 +43,17 @@ if (resize_mode)
     
     if (!skip_main_characters)
     {
-        cast_shadow(1198, true);
-        cast_shadow(1660, true);
-        cast_shadow(1559, true);
+        cast_shadow(obj_mainchara, true);
+        cast_shadow(obj_mainchara_dash, true);
+        cast_shadow(obj_actor, true);
         
         if (global.showcompanions)
         {
-            cast_shadow(1389, true);
-            cast_shadow(775, true);
+            cast_shadow(obj_caterpillarchara, true);
+            cast_shadow(obj_caterpillar_dash, true);
         }
         
-        cast_shadow(1735);
+        cast_shadow(obj_charafake);
     }
     
     if (array_length(dropshadow_instances) > 0)
@@ -89,17 +89,17 @@ else
 {
     if (!skip_main_characters)
     {
-        cast_shadow(1198, true);
-        cast_shadow(1660, true);
-        cast_shadow(1559, true);
+        cast_shadow(obj_mainchara, true);
+        cast_shadow(obj_mainchara_dash, true);
+        cast_shadow(obj_actor, true);
         
         if (global.showcompanions)
         {
-            cast_shadow(1389, true);
-            cast_shadow(775, true);
+            cast_shadow(obj_caterpillarchara, true);
+            cast_shadow(obj_caterpillar_dash, true);
         }
         
-        cast_shadow(1735);
+        cast_shadow(obj_charafake);
     }
     
     if (array_length(dropshadow_instances) > 0)
@@ -131,25 +131,25 @@ with (obj_dropshadowcut)
 with (obj_dynamicshadowmask)
     image_alpha = 1 - other.sunlight_alpha;
 
-cast_shadow_self(697);
+cast_shadow_self(obj_dynamicshadowmask);
 
 with (obj_dynamicshadowmask_slope)
     image_alpha = 1 - other.sunlight_alpha;
 
-cast_shadow_self(827);
+cast_shadow_self(obj_dynamicshadowmask_slope);
 gpu_set_blendmode(bm_subtract);
 draw_surface(surf_static_cutout, -cx, -cy);
 var alwaysfalse = false;
 
 if (!skip_main_characters && alwaysfalse)
 {
-    cast_shadow_self(1198, true);
-    cast_shadow_self(1559, true);
+    cast_shadow_self(obj_mainchara, true);
+    cast_shadow_self(obj_actor, true);
     
     if (global.showcompanions)
-        cast_shadow_self(1389, true);
+        cast_shadow_self(obj_caterpillarchara, true);
     
-    cast_shadow_self(1735);
+    cast_shadow_self(obj_charafake);
 }
 
 if (array_length(selfshadow_instances) > 0)
@@ -171,23 +171,23 @@ if (global.darkzone)
     
     if (!skip_main_characters && alwaysfalse)
     {
-        cast_highlight(1198, true);
-        cast_highlight(1660, true);
-        cast_highlight(1559, true);
+        cast_highlight(obj_mainchara, true);
+        cast_highlight(obj_mainchara_dash, true);
+        cast_highlight(obj_actor, true);
         
         if (global.showcompanions)
         {
-            cast_highlight(1389, true);
-            cast_highlight(775, true);
+            cast_highlight(obj_caterpillarchara, true);
+            cast_highlight(obj_caterpillar_dash, true);
         }
         
-        cast_highlight(1735);
-        cast_highlight(1164, true);
-        cast_highlight(18, true);
+        cast_highlight(obj_charafake);
+        cast_highlight(obj_climb_kris, true);
+        cast_highlight(obj_climb_susie, true);
     }
     
     if (marker_mode)
-        cast_highlight(1238, true);
+        cast_highlight(obj_marker, true);
     
     if (array_length(inst_list) > 0)
     {
@@ -209,23 +209,23 @@ if (global.darkzone)
     
     if (!skip_main_characters && alwaysfalse)
     {
-        cast_highlight_cutout(1198);
-        cast_highlight_cutout(1660, true);
-        cast_highlight_cutout(1559);
+        cast_highlight_cutout(obj_mainchara);
+        cast_highlight_cutout(obj_mainchara_dash, true);
+        cast_highlight_cutout(obj_actor);
         
         if (global.showcompanions)
         {
-            cast_highlight_cutout(1389, true);
-            cast_highlight_cutout(775, true);
+            cast_highlight_cutout(obj_caterpillarchara, true);
+            cast_highlight_cutout(obj_caterpillar_dash, true);
         }
         
-        cast_highlight_cutout(1735);
-        cast_highlight_cutout(1164);
-        cast_highlight_cutout(18);
+        cast_highlight_cutout(obj_charafake);
+        cast_highlight_cutout(obj_climb_kris);
+        cast_highlight_cutout(obj_climb_susie);
     }
     
     if (marker_mode)
-        cast_highlight_cutout(1238);
+        cast_highlight_cutout(obj_marker);
     
     if (array_length(inst_list) > 0)
     {
@@ -266,17 +266,17 @@ if (global.darkzone)
 }
 
 surface_set_target(surf_dyna_shadows);
-cast_shadow_self(1660, true);
+cast_shadow_self(obj_mainchara_dash, true);
 
 if (global.showcompanions)
-    cast_shadow_self(775, true);
+    cast_shadow_self(obj_caterpillar_dash, true);
 
-cast_shadow_self(1735);
-cast_shadow_self(1164, true);
-cast_shadow_self(18, true);
+cast_shadow_self(obj_charafake);
+cast_shadow_self(obj_climb_kris, true);
+cast_shadow_self(obj_climb_susie, true);
 
 if (marker_mode)
-    cast_shadow_self(1238, true);
+    cast_shadow_self(obj_marker, true);
 
 if (array_length(inst_list) > 0)
 {

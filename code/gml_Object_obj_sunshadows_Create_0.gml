@@ -32,7 +32,7 @@ if (global.darkzone == 0)
     hcutout_tile_layer_names = ["Town_Shadows_morning"];
     hcutout_asset_layer_names = ["HIGHLIGHTCUT", "Town_Shadows_morning_a"];
     objects_shadows = [];
-    objects_cutout = [1238];
+    objects_cutout = [obj_marker];
     objects_hcutout = [];
 }
 else if (global.darkzone == 1)

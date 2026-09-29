@@ -1167,9 +1167,9 @@ if (slipcon > 0)
         snd_play(snd_bump);
         
         if (xclimb > 0)
-            slipsprite = 1563;
+            slipsprite = spr_kris_climb_new_slip_right;
         else if (xclimb < 0)
-            slipsprite = 1352;
+            slipsprite = spr_kris_climb_new_slip_left;
         
         sprite_index = slipsprite;
         image_index = 1;
@@ -1352,9 +1352,9 @@ if (climbcon > 0)
     if (climbcon == 2)
     {
         if (xclimb > 0)
-            slipsprite = 1563;
+            slipsprite = spr_kris_climb_new_slip_right;
         else if (xclimb < 0)
-            slipsprite = 1352;
+            slipsprite = spr_kris_climb_new_slip_left;
         
         recently_bumped = -1;
         previous_bump = -1;
@@ -1364,7 +1364,7 @@ if (climbcon > 0)
             if (instance_exists(obj_dw_dogplatforming))
             {
                 snd_stop(scr_84_get_sound("snd_flowery_voiceclip_yes"));
-                snd_play_flowery(228);
+                snd_play_flowery(snd_flowery_voiceclip_yes);
             }
             
             with (obj_climb_susie)

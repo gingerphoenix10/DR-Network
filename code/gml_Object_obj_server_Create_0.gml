@@ -221,7 +221,7 @@ function ReceivedPacket(arg0, arg1)
                     player_kick(socket);
                 }
                 var sndfntpluse = 151;
-                if (instance_exists(1198))
+                if (instance_exists(obj_mainchara))
                 {
                     sndfntpluse = obj_mainchara.sndfnt;
                 }
