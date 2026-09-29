@@ -16,7 +16,7 @@ import subprocess
 import time
 
 buildXdelta = True
-buildG3MPatch = True
+buildG3MPatch = False
 
 tempPath = dir_path = os.path.dirname(os.path.realpath(__file__))
 os.chdir(tempPath)
@@ -112,7 +112,7 @@ for key in data:
                 command[0] = "xdelta3.exe"
                 subprocess.run(command, stdout=stdout)
             except FileNotFoundError:
-                print("Build xdelta is enabled, but xdelta.exe / xdelta3.exe could not be located. Skipping xdeltas")
+                print("Build xdelta is enabled, but xdelta.exe / xdelta3.exe could not be located. Skipping xdelta generation.")
                 buildXdelta = False
 
         if buildXdelta:
@@ -126,7 +126,7 @@ for key in data:
         try:
             subprocess.run(["G3MTool.exe", "patch", "create", data[key]["Data"], outputFile, outputG3M], stdout=stdout)
         except FileNotFoundError:
-            print("Build g3mpatch is enabled, but G3MTool.exe could not be located. Skipping g3mpatches")
+            print("Build g3mpatch is enabled, but G3MTool.exe could not be located. Skipping g3mpatch generation.")
             buildG3MPatch = False
 
         if buildG3MPatch:
@@ -143,16 +143,16 @@ minutes, rem = divmod(rem, 60)
 seconds, rem = divmod(rem, 1)
 milliseconds = int(rem * 1000)
 
-parts = []
+elapsedParts = []
 
 if hours:
-    parts.append(f"{int(hours)} hour{'s' if hours != 1 else ''}")
+    elapsedParts.append(f"{int(hours)} hour{'s' if hours != 1 else ''}")
 if minutes:
-    parts.append(f"{int(minutes)} minute{'s' if minutes != 1 else ''}")
+    elapsedParts.append(f"{int(minutes)} minute{'s' if minutes != 1 else ''}")
 if seconds:
-    parts.append(f"{int(seconds)} second{'s' if seconds != 1 else ''}")
+    elapsedParts.append(f"{int(seconds)} second{'s' if seconds != 1 else ''}")
 
 # Always show milliseconds
-parts.append(f"{milliseconds} millisecond{'s' if milliseconds != 1 else ''}")
+elapsedParts.append(f"{milliseconds} millisecond{'s' if milliseconds != 1 else ''}")
 
-print(f"\nAll builds complete in {' '.join(parts)}!")
+print(f"\nAll builds complete in {' '.join(elapsedParts)}!")

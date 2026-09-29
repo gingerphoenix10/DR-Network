@@ -1,5 +1,5 @@
 # Simple script to transfer a data.win file to Nintendo Switch over USB.
-# Currently only supports UMS transfer, but FTP / MTP may be added later
+# Currently only supports UMS and (partial) FTP transfer, but MTP may be added later
 import os
 import shutil
 import math
@@ -133,9 +133,11 @@ elif Mode == "FTP":
         # Retrieved 2026-07-27, License - CC BY-SA 3.0
         filesize = os.path.getsize(src)
         if progress:
+            # If it's imported, use a nicely formatted progress bar
             with tqdm(unit = 'blocks', unit_scale = True, leave = False, miniters = 1, desc = 'Uploading......', total = filesize) as tqdm_instance:
                     ftp.storbinary('STOR ' + fileName, data, 2048, callback = lambda sent: tqdm_instance.update(len(sent)))
         else:
+            # Otherwise if tqdm isn't installed, fallback to just printing the upload percentage
             uploaded = 0
             def progUpdate(amnt):
                 global uploaded
@@ -147,6 +149,8 @@ elif Mode == "FTP":
 
     # Return to romfs and load external assets
     print(ftp.cwd(romfsDir))
+
+    # UNFINISHED
 
     print(ftp.quit())
     exit()
