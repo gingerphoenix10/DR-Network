@@ -5,7 +5,7 @@
         case "kris":
         default:
             sety = 10;
-            cutscenewait = spr_kris_pease;
+            cutscenewait = spr_kris_peace;
             
             if (!global.darkzone)
                 cutscenewait = spr_kris_sit_wind;
