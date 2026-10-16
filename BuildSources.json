@@ -14,5 +14,9 @@
     "Nintendo Switch v240": {
         "Data": "C:\\Program Files (x86)\\Steam\\steamapps\\content\\app_1671210\\DELTARUNE 1.06 [0100A0D022A68800][v393216][UPD]\\Program #0\\1\\chapter5_switch\\game.win",
         "OutputFile": "game.win"
+    },
+    "PS4 v253": {
+        "Data": "D:\\Mods\\PS4\\games\\CUSA52463-patch\\games\\chapter5_ps4\\game.win",
+        "OutputFile": "game.win"
     }
 }
