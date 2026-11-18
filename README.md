@@ -13,7 +13,7 @@ DO NOT EXPECT THIS TO BE STABLE. It is still very experimental. There will be a 
 | -------- | ------ | ----------- | -------- | -------------------------------- | ----------- |
 | Windows  |   ✅   |     ✅     |    ✅    |                ✅               |             |         
 | MacOS    |   ❌   |             |          |                                  |             |
-| Linux    |   ❌   |             |          |                                  |             |
+| Linux    |   ✅   |     ❌     |    ❌    |                ✅               | Only tested on SteamOS in Game Mode. Tried on the current Proton Stable (Proton 11.0-2) and Proton Experimental (as of 2026-11-13).<br>Hosting claims the address is already in use, and joining claims the server doesn't exist |
 | Switch 1 |   ✅   |     ✅     |    ✅    |                ❌               |             |
 | Switch 2 |   ❌   |             |          |                                  |             |
 | PS4      |   ✅   |     ✅     |    ✅    |                ❌               |             |
